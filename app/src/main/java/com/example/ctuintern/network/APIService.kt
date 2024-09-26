@@ -1,0 +1,32 @@
+package com.example.ctuintern.network
+
+import com.example.ctuintern.data.model.CheckUser
+import com.example.ctuintern.data.model.Employer
+import com.example.ctuintern.data.model.EmployerResponse
+import com.example.ctuintern.data.model.Field
+import com.example.ctuintern.data.model.News
+import com.example.ctuintern.data.model.Student
+import com.example.ctuintern.data.model.Teacher
+import com.example.ctuintern.data.model.User
+import com.example.ctuintern.ulti.UserRole
+import com.google.gson.JsonObject
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+
+interface APIService {
+
+    @GET("/news")
+    suspend fun getNews(): List<News>
+
+    @POST("/login")
+    suspend fun getUserInformation(@Body checkUser: CheckUser): JsonObject
+
+    @POST("/createUser")
+    suspend fun createUser(@Body employer: Employer): Response<EmployerResponse>
+
+    @POST("/addNewsToFavorite/{userID}")
+    suspend fun addNewsToFavorite(@Body news: News, @Path("userID") userID: String)
+}

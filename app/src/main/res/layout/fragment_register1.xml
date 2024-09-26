@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.login.LoginFragment"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_recruiment"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:textSize="24sp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/baloo_2"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/background_input_account">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameIcon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/name"
+            android:layout_alignParentLeft="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/nameIcon"
+            app:passwordToggleTint="@color/blue"
+            app:boxBackgroundMode="none"
+            android:padding="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/name"
+                android:inputType="text"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/baloo_2"
+                android:hint="@string/company_name"
+                android:textColorHint="@color/black"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_input_account">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fieldIcon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/address"
+            android:layout_alignParentLeft="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fieldIcon"
+            app:passwordToggleTint="@color/blue"
+            android:padding="0dp"
+            android:layout_marginVertical="0dp"
+            android:layout_centerVertical="true"
+            app:boxBackgroundMode="filled"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/field"
+                android:background="@android:color/transparent"
+                android:text="@string/field"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/baloo_2"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/background_input_account">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/addressIcon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/address"
+            android:layout_alignParentLeft="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/addressIcon"
+            app:passwordToggleTint="@color/blue"
+            app:boxBackgroundMode="none"
+            android:padding="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/address"
+                android:inputType="text"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/baloo_2"
+                android:hint="@string/address"
+                android:textColorHint="@color/black"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/background_input_account">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/webAddressIcon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/website"
+            android:layout_alignParentLeft="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/webAddressIcon"
+            app:passwordToggleTint="@color/blue"
+            app:boxBackgroundMode="none"
+            android:padding="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerVertical="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/website"
+                android:inputType="text"
+                android:textSize="20sp"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/baloo_2"
+                android:hint="@string/website_address"
+                android:textColorHint="@color/black"
+                android:padding="0dp"
+                android:layout_marginBottom="10dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/background_input_account">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sizeIcon"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/size"
+            android:layout_alignParentLeft="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/sizeIcon"
+            app:passwordToggleTint="@color/blue"
+            android:padding="0dp"
+            android:layout_marginVertical="0dp"
+            android:layout_centerVertical="true"
+            app:boxBackgroundMode="filled"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/size"
+                android:background="@android:color/transparent"
+                android:text="@string/company_size"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:fontFamily="@font/baloo_2"
+                android:paddingVertical="15dp"
+                android:paddingHorizontal="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:id="@+id/nextBtn"
+        android:text="@string/next"
+        android:fontFamily="@font/baloo_2_bold"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:background="@drawable/background_login_button"
+        app:backgroundTint="@color/blue"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/backBtn"
+        android:text="@string/back"
+        android:fontFamily="@font/baloo_2_bold"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:background="@drawable/background_back_button"
+        app:backgroundTint="@color/yellow"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

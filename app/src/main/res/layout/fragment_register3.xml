@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.login.LoginFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_ctu"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:textSize="24sp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/baloo_2"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logoctu"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_request_to_email"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:textSize="24sp"
+        android:textColor="@color/blue"
+        android:layout_marginHorizontal="20dp"
+        android:fontFamily="@font/baloo_2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/check_please"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/baloo_2"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:id="@+id/backBtn"
+        android:text="@string/back_to_login"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:background="@drawable/background_back_button"
+        app:backgroundTint="@color/yellow"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

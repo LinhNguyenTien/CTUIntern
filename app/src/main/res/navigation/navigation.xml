@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.ctuintern.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment1"
+            app:destination="@id/registerFragment1" />
+        <action
+            android:id="@+id/action_loginFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment1"
+        android:name="com.example.ctuintern.ui.register.RegisterFragment1"
+        android:label="RegisterFragment1"
+        tools:layout="@layout/fragment_register1">
+        <action
+            android:id="@+id/action_registerFragment1_to_registerFragment2"
+            app:destination="@id/registerFragment2">
+        </action>
+        <action
+            android:id="@+id/action_registerFragment1_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="employer"
+            app:argType="com.example.ctuintern.data.model.Employer" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment2"
+        android:name="com.example.ctuintern.ui.register.RegisterFragment2"
+        android:label="RegisterFragment2"
+        tools:layout="@layout/fragment_register2">
+        <action
+            android:id="@+id/action_registerFragment2_to_registerFragment3"
+            app:destination="@id/registerFragment3" />
+        <action
+            android:id="@+id/action_registerFragment2_to_registerFragment1"
+            app:destination="@id/registerFragment1">
+        </action>
+        <argument
+            android:name="employer"
+            app:argType="com.example.ctuintern.data.model.Employer"/>
+    </fragment>
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.example.ctuintern.ui.news.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/registerFragment3"
+        android:name="com.example.ctuintern.ui.register.RegisterFragment3"
+        android:label="RegisterFragment3"
+        tools:layout="@layout/fragment_register3">
+        <action
+            android:id="@+id/action_registerFragment3_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>

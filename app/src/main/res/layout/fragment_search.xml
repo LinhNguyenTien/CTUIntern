@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.search.SearchFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:background="@color/blue"
+        android:padding="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backArrow"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back_arrow"
+            android:layout_alignParentStart="true"/>
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/search"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@id/backArrow"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/background_searchview"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycleView"
+        android:layout_below="@id/header"
+        android:layout_margin="10dp"/>
+
+
+</RelativeLayout>

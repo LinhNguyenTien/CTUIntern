@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">CTUIntern</string>
+    <string name="welcome_string">Chào mừng đến với CTU Intern</string>
+    <string name="forgot_password">Quên mật khẩu? <b>Liên hệ ngay</b></string>
+    <string name="account">Tài khoản</string>
+    <string name="password">Mật khẩu</string>
+    <string name="recruiment">Tôi là <b>nhà tuyển dụng</b></string>
+    <string name="login">Đăng nhập</string>
+    <string name="welcome_recruiment">Chào mừng nhà tuyển dụng\nHãy giới thiệu về bản thân!</string>
+    <string name="welcome_ctu">Chào mừng đến với CTU Intern</string>
+    <string name="send_request_to_email">Chúng tôi đã gửi đến Email của bạn yêu cầu kích hoạt tài khoản</string>
+    <string name="check_please">Vui lòng kiểm tra để đăng nhập</string>
+    <string name="company_name">Tên công ty</string>
+    <string name="back_to_login">Trở lại đăng nhập</string>
+    <string name="field">Lĩnh vực</string>
+    <string name="address">Địa chỉ</string>
+    <string name="website_address">Địa chỉ website</string>
+    <string name="company_size">Qui mô doanh nghiệp</string>
+    <string name="back">Trở lại</string>
+    <string name="next">Tiếp tục</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="email">Email kích hoạt tài khoản</string>
+    <string name="active_account">Kích hoạt</string>
+    <string name="login_fail_alert">Đăng nhập thất bại</string>
+    <string name="register_fail_alert">Đăng ký thất bại</string>
+    <string name="login_fail_alert_content">Tài khoản hoặc mật khẩu không hợp lệ</string>
+    <string name="validating">Đang xác thực...</string>
+    <string name="your_oppo">Cơ hội dành cho bạn</string>
+    <string name="interview">Phỏng vấn</string>
+    <string name="intern">Thực tập</string>
+    <string name="news">Tin tức</string>
+    <string name="favorite">Yêu thích</string>
+    <string name="apply">Ứng tuyển</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
