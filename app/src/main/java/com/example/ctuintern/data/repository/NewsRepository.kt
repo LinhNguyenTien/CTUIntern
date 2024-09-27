@@ -10,4 +10,6 @@ class NewsRepository @Inject constructor(private val apiService: APIService) {
 
     suspend fun addNewsToFavorite(news: News, userID: String) = apiService.addNewsToFavorite(news, userID)
 
+    suspend fun removeNewsFromFavorites(news: News, userID: String) = apiService.removeNewsFromFavorites(news, userID)
+
 }

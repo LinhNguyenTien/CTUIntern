@@ -21,13 +21,16 @@ import com.example.ctuintern.ulti.mDiffUtil
 import okhttp3.internal.addHeaderLenient
 
 class NewsAdapter(
-    private val addNewsToFavorite: (News) -> Unit
+    private val addNewsToFavorite: (News) -> Unit,
+    private val removeNewsFromFavorite: (News) -> Unit,
+    private val showDetail: (News) -> Unit
 ): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     private var newsList: List<News> = listOf()
     class NewsViewHolder(private val binding: JobItemBinding, private val addNewsToFavorite: (News) -> Unit) : ViewHolder(binding.root) {
         lateinit var companyPhoto: ImageView
         lateinit var companyName: TextView
+        lateinit var jobNme: TextView
         lateinit var quantity: TextView
         lateinit var expireDay: TextView
         lateinit var favorite: ImageView
@@ -38,6 +41,7 @@ class NewsAdapter(
             quantity = binding.quantity
             expireDay = binding.deadline
             favorite = binding.favorite
+            jobNme = binding.job
         }
 
         fun bind(news: News) {
@@ -50,8 +54,9 @@ class NewsAdapter(
                 .into(companyPhoto)
 
             companyName.text = news.employer!!.userName
-            quantity.text = news.quantity.toString()
-            expireDay.text = news.expireDay.toString()
+
+            quantity.text = "${news.quantity.toString()} người"
+            expireDay.text = "Hạn nộp: ${news.expireDay.toString()}"
             favorite.setOnClickListener {
                 addNewsToFavorite(news)
             }
@@ -84,6 +89,22 @@ class NewsAdapter(
         if(news != null) {
             Log.i("news info", "news: ${news.toString()}")
             holder.bind(news)
+            holder.itemView.setOnClickListener {
+                showDetail(news)
+            }
+            holder.favorite.setOnClickListener {
+                if(news.isFavorite) {
+                    removeNewsFromFavorite(news)
+                    holder.favorite.setImageResource(R.drawable.heart)
+                    news.isFavorite = false
+                }
+                else {
+                    addNewsToFavorite(news)
+                    holder.favorite.setImageResource(R.drawable.heart_clicked)
+                    news.isFavorite = true
+                }
+
+            }
         }
         else {
             Log.i("news info", "news is null")

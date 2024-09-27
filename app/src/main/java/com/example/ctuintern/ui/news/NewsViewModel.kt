@@ -30,4 +30,10 @@ class NewsViewModel @Inject constructor(private val newsRepository: NewsReposito
             newsRepository.addNewsToFavorite(news, userID)
         }
     }
+
+    fun removeNewsFromFavorites(news: News, userID: String) {
+        viewModelScope.launch {
+            newsRepository.removeNewsFromFavorites(news, userID)
+        }
+    }
 }

@@ -40,6 +40,8 @@ class NewsFragment : MainFragment() {
     private lateinit var recycleView: RecyclerView
     private lateinit var student: Student
     private val viewModel: NewsViewModel by viewModels()
+
+
     override fun initView() {
         profile = binding.profile
         search = binding.search
@@ -64,9 +66,11 @@ class NewsFragment : MainFragment() {
                         Log.i("NewsFragment", "initView: empty news list")
                     }
                     else {
-                        var adapter = NewsAdapter() { news ->
-                            viewModel.addNewsToFavorites(news, user.userID)
-                        }
+                        var adapter = NewsAdapter(
+                            addNewsToFavorite = { news -> viewModel.addNewsToFavorites(news, user.userID) },
+                            removeNewsFromFavorite = { news -> viewModel.removeNewsFromFavorites(news, user.userID) },
+                            showDetail = { news -> showNewsDetail(news) }
+                        )
                         adapter.setDataset(newsList)
                         recycleView.adapter = adapter
                         Log.i("NewsFragment", "initView: ${newsList.size}")
@@ -80,6 +84,10 @@ class NewsFragment : MainFragment() {
         else {
             Log.i("NewsFragment", "initView: user is null")
         }
+    }
+
+    private fun showNewsDetail(news: News) {
+        navigateToFragment(binding.root, NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(news))
     }
 
     override fun initClick() {

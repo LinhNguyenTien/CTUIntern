@@ -29,4 +29,7 @@ interface APIService {
 
     @POST("/addNewsToFavorite/{userID}")
     suspend fun addNewsToFavorite(@Body news: News, @Path("userID") userID: String)
+
+    @POST("/removeNewsFromFavorites/{userID}")
+    suspend fun removeNewsFromFavorites(@Body news: News, @Path("userID") userID: String)
 }
