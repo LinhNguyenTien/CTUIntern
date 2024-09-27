@@ -86,13 +86,14 @@ class NewsFragment : MainFragment() {
         }
     }
 
-    private fun showNewsDetail(news: News) {
+    override fun showNewsDetail(news: News) {
         navigateToFragment(binding.root, NewsFragmentDirections.actionNewsFragmentToNewsDetailFragment(news))
     }
 
     override fun initClick() {
         profile.setOnClickListener {
             // navigate to profile
+
         }
         search.setOnClickListener {
             // navigate to search

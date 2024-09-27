@@ -63,6 +63,18 @@
         <action
             android:id="@+id/action_newsFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_internFragment"
+            app:destination="@id/internFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_applyFragment"
+            app:destination="@id/applyFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_interviewFragment"
+            app:destination="@id/interviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment3"
@@ -96,5 +108,94 @@
         <action
             android:id="@+id/action_searchFragment_to_newsDetailFragment"
             app:destination="@id/newsDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/applyFragment"
+        android:name="com.example.ctuintern.ui.apply.ApplyFragment"
+        android:label="fragment_apply"
+        tools:layout="@layout/fragment_apply" >
+        <action
+            android:id="@+id/action_applyFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_applyFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_applyFragment_to_internFragment"
+            app:destination="@id/internFragment" />
+        <action
+            android:id="@+id/action_applyFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_applyFragment_to_interviewFragment"
+            app:destination="@id/interviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/internFragment"
+        android:name="com.example.ctuintern.InternFragment"
+        android:label="fragment_intern"
+        tools:layout="@layout/fragment_intern" >
+        <action
+            android:id="@+id/action_internFragment_to_interviewFragment"
+            app:destination="@id/interviewFragment" />
+        <action
+            android:id="@+id/action_internFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_internFragment_to_applyFragment"
+            app:destination="@id/applyFragment" />
+        <action
+            android:id="@+id/action_internFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.ctuintern.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.ctuintern.ui.favorite.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_favoriteFragment_to_interviewFragment"
+            app:destination="@id/interviewFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_internFragment"
+            app:destination="@id/internFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_applyFragment"
+            app:destination="@id/applyFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
+        <argument
+            android:name="news"
+            app:argType="com.example.ctuintern.data.model.News" />
+    </fragment>
+    <fragment
+        android:id="@+id/interviewFragment"
+        android:name="com.example.ctuintern.ui.interview.InterviewFragment"
+        android:label="fragment_interview"
+        tools:layout="@layout/fragment_interview" >
+        <action
+            android:id="@+id/action_interviewFragment_to_internFragment"
+            app:destination="@id/internFragment" />
+        <action
+            android:id="@+id/action_interviewFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_interviewFragment_to_applyFragment"
+            app:destination="@id/applyFragment" />
+        <action
+            android:id="@+id/action_interviewFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
     </fragment>
 </navigation>

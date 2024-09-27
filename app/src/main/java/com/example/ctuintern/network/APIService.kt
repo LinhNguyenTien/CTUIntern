@@ -21,6 +21,9 @@ interface APIService {
     @GET("/news")
     suspend fun getNews(): List<News>
 
+    @GET("/favoriteNews")
+    suspend fun getFavoriteNews(userID: String): List<News>
+
     @POST("/login")
     suspend fun getUserInformation(@Body checkUser: CheckUser): JsonObject
 
@@ -32,4 +35,7 @@ interface APIService {
 
     @POST("/removeNewsFromFavorites/{userID}")
     suspend fun removeNewsFromFavorites(@Body news: News, @Path("userID") userID: String)
+
+    @POST("/applyNews/{userID")
+    suspend fun applyNews(@Body news: News, @Path("userID") userID: String)
 }

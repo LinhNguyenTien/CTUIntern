@@ -2,16 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.news.NewsDetailFragment">
+    tools:context=".ui.news.NewsDetailFragment"
+    android:orientation="vertical">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/header"
         android:background="@color/blue">
-
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -19,7 +20,6 @@
             android:id="@+id/companyLogo"
             android:src="@drawable/loading"
             android:layout_marginTop="50dp"/>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -49,7 +49,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
-
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,8 +58,20 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/viewPager"
-        android:layout_below="@id/header"/>
+        android:layout_below="@id/header"
+        android:layout_above="@id/applyBtn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/applyBtn"
+        android:text="Ứng tuyển ngay"
+        android:fontFamily="@font/baloo_2_bold"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

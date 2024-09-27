@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet.Transform
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
@@ -22,6 +23,7 @@ class NewsDetailFragment : MainFragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var adapter: ViewPagerAdapter
     private val args: NewsDetailFragmentArgs by navArgs()
+    private val viewModel: NewsDetailViewModel by viewModels()
     override fun initView() {
         tabLayout = binding.tabLayout
         viewPager = binding.viewPager
@@ -43,6 +45,10 @@ class NewsDetailFragment : MainFragment() {
             .transform(CircleCrop())
             .override(100, 100)
             .into(binding.companyLogo)
+
+        binding.applyBtn.setOnClickListener {
+            viewModel.applyNews(news, getCurrentUser()!!.userID)
+        }
     }
 
     override fun initClick() {

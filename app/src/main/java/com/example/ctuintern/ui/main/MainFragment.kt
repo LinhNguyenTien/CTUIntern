@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.User
 
 abstract class MainFragment: Fragment() {
@@ -38,4 +39,6 @@ abstract class MainFragment: Fragment() {
     fun getCurrentUser(): User? {
         return (requireActivity() as MainActivity).getCurrentUser()
     }
+
+    abstract fun showNewsDetail(news: News)
 }
