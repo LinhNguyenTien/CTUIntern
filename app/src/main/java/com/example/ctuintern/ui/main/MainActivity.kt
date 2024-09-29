@@ -1,11 +1,13 @@
 package com.example.ctuintern.ui.main
 
 import android.app.Activity
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
@@ -27,12 +29,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
     private var currentUser: User? = null
-    fun setCurrentUser(user: User) {
+    fun setCurrentUser(user: User?) {
         currentUser = user
     }
 
     fun getCurrentUser(): User? {
         return currentUser
+    }
+
+    fun checkPermission(permission: String): Boolean {
+        return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

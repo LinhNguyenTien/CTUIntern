@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.example.ctuintern.R
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.databinding.FragmentRegister3Binding
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,10 @@ class RegisterFragment3 : MainFragment() {
         backToLogin.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_registerFragment3_to_loginFragment)
         }
+    }
+
+    override fun showNewsDetail(news: News) {
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

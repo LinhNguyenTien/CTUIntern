@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.Employer
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.databinding.FragmentRegister2Binding
 import com.example.ctuintern.ui.main.MainFragment
 import com.example.ctuintern.ulti.isValidInputStep2
@@ -66,6 +67,10 @@ class RegisterFragment2 : MainFragment() {
         backBtn.setOnClickListener {
             navigateToFragment(binding.root, RegisterFragment2Directions.actionRegisterFragment2ToRegisterFragment1(employer))
         }
+    }
+
+    override fun showNewsDetail(news: News) {
+
     }
 
     private fun sendActiveEmail(email: String) {

@@ -1,14 +1,314 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.apply.ApplyFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/blue"
+    tools:context=".ui.news.NewsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/baloo_2_bold"
+            android:textColor="@color/light_yellow"
+            android:textSize="24sp"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile"
+            android:text="Username"
+            android:fontFamily="@font/baloo_2_bold"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
 
-</FrameLayout>
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/search"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/background_searchview"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:weightSum="4">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/company">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/companyIcon"
+                app:cardCornerRadius="100dp"
+                android:layout_margin="5dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/company"
+                    android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Công ty"
+                android:layout_below="@+id/companyIcon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/job">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/jobIcon"
+                app:cardCornerRadius="100dp"
+                android:layout_margin="5dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/job"
+                    android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Công việc"
+                android:layout_below="@+id/jobIcon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/location">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/locationIcon"
+                app:cardCornerRadius="100dp"
+                android:layout_margin="5dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/position"
+                    android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa điểm"
+                android:layout_below="@+id/locationIcon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tech">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/techIcon"
+                app:cardCornerRadius="100dp"
+                android:layout_margin="5dp"
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/tech"
+                    android:padding="10dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Công nghệ"
+                android:layout_below="@+id/techIcon"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:id="@+id/listJob"
+            android:background="@drawable/background_list_job">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_oppo"
+                android:textSize="20sp"
+                android:textColor="@color/light_yellow"
+                android:fontFamily="@font/baloo_2_bold"
+                android:layout_margin="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/blue"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/videoCall">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/videoIcon"
+                    android:src="@drawable/video"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phỏng vấn"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/videoIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/intern">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/internIcon"
+                    android:src="@drawable/intern"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thực tập"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/internIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/news">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newsIcon"
+                    android:src="@drawable/news"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tin tức"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/newsIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/favorite">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/favoriteIcon"
+                    android:src="@drawable/heart"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yêu thích"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/favoriteIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/apply">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/applyIcon"
+                    android:src="@drawable/apply_selected"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ứng tuyển"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/applyIcon"
+                    android:textColor="@color/hard_yellow"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -8,4 +8,5 @@
     <color name="light_yellow">#F6E22D</color>
     <color name="hard_yellow">#FFEF5B</color>
     <color name="red">#DF5050</color>
+    <color name="success">#6BCA55</color>
 </resources>

@@ -4,6 +4,7 @@ import com.example.ctuintern.data.model.CheckUser
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.EmployerResponse
 import com.example.ctuintern.data.model.Field
+import com.example.ctuintern.data.model.Profile
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
@@ -23,5 +24,8 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
         return apiService.createUser(employer)
     }
 
+    suspend fun updateCV(profile: Profile, userID: String) {
+        apiService.updateCV(profile, userID)
+    }
 
 }

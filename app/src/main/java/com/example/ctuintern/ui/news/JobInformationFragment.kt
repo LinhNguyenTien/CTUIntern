@@ -25,6 +25,10 @@ class JobInformationFragment(val news: News) : MainFragment() {
 
     }
 
+    override fun showNewsDetail(news: News) {
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

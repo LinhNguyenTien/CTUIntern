@@ -11,9 +11,12 @@ class Student(
     role: String,
     val studentID: String,
     val studyTime: String,
-    val GPA: Float
+    val GPA: Float,
+    val classCTU: Class,
+    val profile: Profile
 ): User(userID, userName, account, password, phone, email, profilePicture, role) {
     override fun toString(): String {
-        return "Student(studentID='$studentID', studyTime='$studyTime', GPA=$GPA)"
+        super.toString()
+        return "Student(studentID='$studentID', studyTime='$studyTime', GPA=$GPA, class=$classCTU)"
     }
 }

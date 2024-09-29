@@ -1,10 +1,11 @@
-package com.example.ctuintern
+package com.example.ctuintern.ui.intern
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.ctuintern.R
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.ui.main.MainFragment
 
 class InternFragment : MainFragment() {
@@ -13,6 +14,10 @@ class InternFragment : MainFragment() {
     }
 
     override fun initClick() {
+
+    }
+
+    override fun showNewsDetail(news: News) {
 
     }
 

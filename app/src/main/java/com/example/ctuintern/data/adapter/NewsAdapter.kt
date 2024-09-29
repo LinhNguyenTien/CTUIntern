@@ -52,10 +52,15 @@ class NewsAdapter(
                 .load(news.employer!!.profilePicture)
                 .override(150, 150)
                 .into(companyPhoto)
-
+            if(news.isFavorite) {
+                favorite.setImageResource(R.drawable.heart_clicked)
+            }
+            else {
+                favorite.setImageResource(R.drawable.heart)
+            }
             companyName.text = news.employer!!.userName
-
-            quantity.text = "${news.quantity.toString()} người"
+            jobNme.text = news.title
+            quantity.text = "Số lượng: ${news.quantity.toString()} người"
             expireDay.text = "Hạn nộp: ${news.expireDay.toString()}"
             favorite.setOnClickListener {
                 addNewsToFavorite(news)
@@ -103,7 +108,6 @@ class NewsAdapter(
                     holder.favorite.setImageResource(R.drawable.heart_clicked)
                     news.isFavorite = true
                 }
-
             }
         }
         else {

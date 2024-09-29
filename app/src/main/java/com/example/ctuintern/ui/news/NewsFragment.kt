@@ -34,7 +34,6 @@ class NewsFragment : MainFragment() {
     private lateinit var tech: RelativeLayout
     private lateinit var interview: RelativeLayout
     private lateinit var intern: RelativeLayout
-    private lateinit var news: RelativeLayout
     private lateinit var favorite: RelativeLayout
     private lateinit var apply: RelativeLayout
     private lateinit var recycleView: RecyclerView
@@ -52,7 +51,6 @@ class NewsFragment : MainFragment() {
         recycleView = binding.recyclerView
         interview = binding.videoCall
         intern = binding.intern
-        news = binding.news
         favorite = binding.favorite
         apply = binding.apply
         if(getCurrentUser() != null) {
@@ -93,37 +91,35 @@ class NewsFragment : MainFragment() {
     override fun initClick() {
         profile.setOnClickListener {
             // navigate to profile
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_profileFragment)
         }
         search.setOnClickListener {
             // navigate to search
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         company.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         job.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         location.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         tech.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         interview.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_interviewFragment)
         }
         intern.setOnClickListener {
-
-        }
-        news.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_internFragment)
         }
         favorite.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_favoriteFragment)
         }
         apply.setOnClickListener {
-
+            navigateToFragment(binding.root, R.id.action_newsFragment_to_applyFragment)
         }
     }
 

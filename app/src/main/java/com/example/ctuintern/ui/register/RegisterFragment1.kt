@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.Field
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.databinding.FragmentRegister1Binding
 import com.example.ctuintern.ui.main.MainFragment
 import com.google.android.material.textfield.TextInputEditText
@@ -61,6 +62,10 @@ class RegisterFragment1 : MainFragment() {
         backBtn.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_registerFragment1_to_loginFragment)
         }
+    }
+
+    override fun showNewsDetail(news: News) {
+
     }
 
     private fun getInput() {

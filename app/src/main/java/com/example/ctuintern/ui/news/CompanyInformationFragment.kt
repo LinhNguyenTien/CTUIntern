@@ -27,6 +27,10 @@ class CompanyInformationFragment(val news: News) : MainFragment() {
     override fun initClick() {
     }
 
+    override fun showNewsDetail(news: News) {
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

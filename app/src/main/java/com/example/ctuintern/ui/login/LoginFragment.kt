@@ -5,27 +5,20 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.ctuintern.R
-import com.example.ctuintern.data.model.Employer
-import com.example.ctuintern.data.model.Student
-import com.example.ctuintern.data.model.Teacher
-import com.example.ctuintern.data.model.User
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.databinding.FragmentLoginBinding
 import com.example.ctuintern.ui.main.MainFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class LoginFragment : MainFragment() {
@@ -72,6 +65,10 @@ class LoginFragment : MainFragment() {
         register.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_loginFragment_to_registerFragment1)
         }
+    }
+
+    override fun showNewsDetail(news: News) {
+
     }
 
     private fun authenticateAccount() {
@@ -132,7 +129,6 @@ class LoginFragment : MainFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

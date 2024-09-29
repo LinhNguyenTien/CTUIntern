@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ctuintern.R
+import com.example.ctuintern.data.model.News
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,6 +16,10 @@ class SearchFragment : MainFragment() {
     }
 
     override fun initClick() {
+    }
+
+    override fun showNewsDetail(news: News) {
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

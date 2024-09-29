@@ -1,11 +1,13 @@
 package com.example.ctuintern.ui.main
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
+import androidx.collection.arrayMapOf
+import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.Navigation
 import com.example.ctuintern.data.model.News
@@ -32,12 +34,16 @@ abstract class MainFragment: Fragment() {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 
-    fun setCurrentUser(user: User) {
+    fun setCurrentUser(user: User?) {
         (requireActivity() as MainActivity).setCurrentUser(user)
     }
 
     fun getCurrentUser(): User? {
         return (requireActivity() as MainActivity).getCurrentUser()
+    }
+
+    fun checkPermission(permission: String): Boolean {
+        return (requireActivity() as MainActivity).checkPermission(permission)
     }
 
     abstract fun showNewsDetail(news: News)

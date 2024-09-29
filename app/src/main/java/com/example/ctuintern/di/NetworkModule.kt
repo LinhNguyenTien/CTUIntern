@@ -22,7 +22,7 @@ object NetworkModule {
 
     @Provides
     fun provideBaseUrl(): String {
-        return "https://intern.free.beeceptor.com"
+        return "https://lalaw.free.beeceptor.com"
     }
     @Singleton
     @Provides

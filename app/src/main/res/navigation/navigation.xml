@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_newsFragment_to_interviewFragment"
             app:destination="@id/interviewFragment" />
+        <action
+            android:id="@+id/action_newsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment3"
@@ -96,6 +99,9 @@
         <action
             android:id="@+id/action_newsDetailFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_newsDetailFragment_to_applyFragment"
+            app:destination="@id/applyFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -132,7 +138,7 @@
     </fragment>
     <fragment
         android:id="@+id/internFragment"
-        android:name="com.example.ctuintern.InternFragment"
+        android:name="com.example.ctuintern.ui.intern.InternFragment"
         android:label="fragment_intern"
         tools:layout="@layout/fragment_intern" >
         <action
@@ -152,7 +158,14 @@
         android:id="@+id/profileFragment"
         android:name="com.example.ctuintern.ui.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.ctuintern.ui.favorite.FavoriteFragment"

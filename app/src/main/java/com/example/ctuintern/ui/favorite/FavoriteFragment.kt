@@ -22,11 +22,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoriteFragment : MainFragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
-    private lateinit var profile: TextView
     private lateinit var recycleView: RecyclerView
     private val viewModel: FavoriteViewModel by viewModels()
     private lateinit var student: Student
     override fun initView() {
+        recycleView = binding.recyclerView
         if(getCurrentUser() != null) {
             val user = getCurrentUser()
             if (user is Student) {
@@ -59,6 +59,9 @@ class FavoriteFragment : MainFragment() {
         binding.profile.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_favoriteFragment_to_profileFragment)
         }
+        binding.news.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_newsFragment)
+        }
     }
 
     override fun showNewsDetail(news: News) {
@@ -75,6 +78,8 @@ class FavoriteFragment : MainFragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        initView()
+        initClick()
         return binding.root
     }
 }

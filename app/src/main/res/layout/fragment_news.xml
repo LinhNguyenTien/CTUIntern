@@ -55,7 +55,8 @@
                 android:id="@+id/companyIcon"
                 app:cardCornerRadius="100dp"
                 android:layout_margin="5dp"
-                android:elevation="0dp">
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -85,7 +86,8 @@
                 android:id="@+id/jobIcon"
                 app:cardCornerRadius="100dp"
                 android:layout_margin="5dp"
-                android:elevation="0dp">
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -115,7 +117,8 @@
                 android:id="@+id/locationIcon"
                 app:cardCornerRadius="100dp"
                 android:layout_margin="5dp"
-                android:elevation="0dp">
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -145,7 +148,8 @@
                 android:id="@+id/techIcon"
                 app:cardCornerRadius="100dp"
                 android:layout_margin="5dp"
-                android:elevation="0dp">
+                android:elevation="0dp"
+                app:cardBackgroundColor="@color/white">
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"

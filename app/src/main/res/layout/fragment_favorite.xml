@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/newsIcon"
-                    android:src="@drawable/news_selected"
+                    android:src="@drawable/news"
                     android:layout_centerHorizontal="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -131,7 +131,7 @@
                     android:textSize="15sp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/newsIcon"
-                    android:textColor="@color/hard_yellow"
+                    android:textColor="@color/white"
                     android:fontFamily="@font/baloo_2_bold"/>
             </RelativeLayout>
             <RelativeLayout
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/favoriteIcon"
-                    android:src="@drawable/heart"
+                    android:src="@drawable/heart_selected"
                     android:layout_centerHorizontal="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                     android:layout_centerHorizontal="true"
                     android:textSize="15sp"
                     android:layout_below="@+id/favoriteIcon"
-                    android:textColor="@color/white"
+                    android:textColor="@color/hard_yellow"
                     android:fontFamily="@font/baloo_2_bold"/>
             </RelativeLayout>
             <RelativeLayout
