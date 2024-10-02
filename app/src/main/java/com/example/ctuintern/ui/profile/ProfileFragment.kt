@@ -2,10 +2,12 @@ package com.example.ctuintern.ui.profile
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.app.DownloadManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +19,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +33,7 @@ import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
 import com.example.ctuintern.databinding.FragmentProfileBinding
+import com.example.ctuintern.ui.login.LoginFailureDialog
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +45,17 @@ class ProfileFragment : MainFragment() {
     private lateinit var student: Student
     private lateinit var recycleView: RecyclerView
     private val viewModel: ProfileViewModel by viewModels()
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // Permission granted, proceed with the download
+            downloadCV()
+        } else {
+            // Permission denied, show a message
+            makeToast("Permission denied. Cannot download file.")
+        }
+    }
     override fun initView() {
         if(getCurrentUser() != null) {
             user = getCurrentUser()!!
@@ -48,7 +64,6 @@ class ProfileFragment : MainFragment() {
                     Log.i("profile fragment", "user is student")
                     student = user as Student
                     setupStudentUI(student)
-                    setupAchievements(student)
                 }
                 is Employer -> {
                     Log.i("profile fragment", "user is employer")
@@ -73,28 +88,12 @@ class ProfileFragment : MainFragment() {
             else {
                 // do nothing
             }
-
-            val window = resultUpdateCVDialog!!.window
-            if (window != null) {
-                // Set the dialog position to top
-                val layoutParams = WindowManager.LayoutParams()
-                layoutParams.copyFrom(window.attributes)
-                layoutParams.gravity = Gravity.TOP
-                layoutParams.y = 50
-                window.attributes = layoutParams
-            }
-
             // Show the dialog
-            resultUpdateCVDialog.show()
+            if (resultUpdateCVDialog != null) {
+                showRoundedDialog(resultUpdateCVDialog)
+                viewModel.resetUploadState()
+            }
         })
-    }
-
-    private fun setupAchievements(student: Student) {
-        val adapter = AchievementAdapter { imageURL ->
-            ShowFullScreenDialog(requireContext(), imageURL)
-        }
-        adapter.setDataset(student.profile.achievements)
-        binding.recycleView.adapter = adapter
     }
 
     private fun setupEmployerUI(employer: Employer) {
@@ -130,7 +129,7 @@ class ProfileFragment : MainFragment() {
             .override(150,150)
             .into(binding.profilePicture)
         binding.CVFrame.setOnClickListener {
-            if(student.profile.CVPath.isEmpty()) {
+            if(student.profile.CVPath.isNullOrEmpty()) {
                 val emptyCVDialog= EmptyCVDialog(
                     context = requireContext(),
                     addCV = {
@@ -140,10 +139,10 @@ class ProfileFragment : MainFragment() {
                                 openFilePicker()
                             }
                         )
-                        uploadCVDialog.show()
+                        showRoundedDialog(uploadCVDialog)
                     }
                 )
-                emptyCVDialog.show()
+                showRoundedDialog(emptyCVDialog)
             }
             else {
                 checkPermissionsAndDownload()
@@ -154,6 +153,16 @@ class ProfileFragment : MainFragment() {
         binding.websiteFrame.visibility = GONE
         binding.sizeFrame.visibility = GONE
     }
+
+    private fun showRoundedDialog(dialog: Dialog) {
+        dialog.window!!.setBackgroundDrawable(
+            ColorDrawable(
+                resources.getColor(android.R.color.transparent)
+            )
+        )
+        dialog.show()
+    }
+
     private fun openFilePicker() {
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
             type = "*/*"
@@ -166,33 +175,29 @@ class ProfileFragment : MainFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
-                viewModel.uploadCVToFirebaseStorage(student, uri)
+                viewModel.uploadCVToFirebaseStorage(student, uri) {
+                    student.profile.CVPath = it
+                }
             }
         }
     }
 
     private fun checkPermissionsAndDownload() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                // Permission already granted
+        when {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                // Permission already granted, proceed with download
                 downloadCV()
-            } else {
-                // Request permission
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_CODE_WRITE_EXTERNAL_STORAGE)
             }
-        } else {
-            // No runtime permission required for versions below Android 6.0
-            downloadCV()
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == REQUEST_CODE_WRITE_EXTERNAL_STORAGE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                downloadCV() // Permission granted, start the download
-            } else {
-                makeToast("Permission denied")
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
+                // Show an explanation to the user why this permission is needed
+                makeToast("Storage permission is needed to download files.")
+            }
+            else -> {
+                // Directly request the permission
+                requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             }
         }
     }

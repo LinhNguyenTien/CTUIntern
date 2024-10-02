@@ -3,77 +3,72 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="20dp"
-    app:cardBackgroundColor="@color/light_yellow"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/white"
     android:layout_marginHorizontal="10dp"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:elevation="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:cardCornerRadius="20dp"
-            android:id="@+id/companyLogoFrame"
-            android:layout_alignParentLeft="true"
+            android:id="@+id/companyLogo"
+            android:src="@drawable/default_company"
+            android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:layout_margin="10dp">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:id="@+id/companyLogo"
-                android:src="@drawable/loading"/>
-        </androidx.cardview.widget.CardView>
-
+            android:layout_margin="10dp"
+            android:background="@drawable/background_company_logo"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/companyLogoFrame"
+            android:layout_toRightOf="@+id/companyLogo"
             android:orientation="vertical"
             android:layout_margin="10dp"
             android:layout_centerVertical="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/companyName"
+                android:id="@+id/title"
                 android:text="Company Name"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="@font/baloo_2_bold"
                 android:textSize="20sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/job"
-                android:text="Job A"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/baloo_2_bold"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/quantity"
-                android:text="Số lượng: 0"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/baloo_2_bold"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/deadline"
-                android:text="Hạn nộp"
-                android:fontFamily="@font/baloo_2_bold"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+                android:textColor="@color/black"/>
 
+            <TextView
+                android:id="@+id/firstSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/baloo_2"
+                android:text="Job name"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/secondSubTitle"
+                android:text="Trạng thái: chưa phản hồi"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/baloo_2"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/thirdSubTitle"
+                android:text="Ngày hẹn: dd/mm/yyyy"
+                android:fontFamily="@font/baloo_2"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/favorite"
-            android:src="@drawable/heart"
+            android:src="@drawable/heart_gray"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"/>

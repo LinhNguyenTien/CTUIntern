@@ -210,5 +210,26 @@
         <action
             android:id="@+id/action_interviewFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_interviewFragment_to_interviewDetailFragment"
+            app:destination="@id/interviewDetailFragment" />
+        <argument
+            android:name="appliedNew"
+            app:argType="com.example.ctuintern.data.model.AppliedNews" />
+        <action
+            android:id="@+id/action_interviewFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/interviewDetailFragment"
+        android:name="com.example.ctuintern.ui.interview.InterviewDetailFragment"
+        android:label="fragment_interview_detail"
+        tools:layout="@layout/fragment_interview_detail">
+        <argument
+            android:name="appliedNew"
+            app:argType="com.example.ctuintern.data.model.AppliedNews" />
+        <action
+            android:id="@+id/action_interviewDetailFragment_to_interviewFragment"
+            app:destination="@id/interviewFragment" />
     </fragment>
 </navigation>

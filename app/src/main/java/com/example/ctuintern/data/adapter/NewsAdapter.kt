@@ -4,21 +4,15 @@ package com.example.ctuintern.data.adapter
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
-import com.example.ctuintern.data.model.Student
-import com.example.ctuintern.data.model.User
 import com.example.ctuintern.databinding.JobItemBinding
-import com.example.ctuintern.ulti.mDiffUtil
-import okhttp3.internal.addHeaderLenient
 
 class NewsAdapter(
     private val addNewsToFavorite: (News) -> Unit,
@@ -30,18 +24,18 @@ class NewsAdapter(
     class NewsViewHolder(private val binding: JobItemBinding, private val addNewsToFavorite: (News) -> Unit) : ViewHolder(binding.root) {
         lateinit var companyPhoto: ImageView
         lateinit var companyName: TextView
-        lateinit var jobNme: TextView
+        lateinit var jobName: TextView
         lateinit var quantity: TextView
         lateinit var expireDay: TextView
         lateinit var favorite: ImageView
 
         fun initView() {
             companyPhoto = binding.companyLogo
-            companyName = binding.companyName
-            quantity = binding.quantity
-            expireDay = binding.deadline
+            companyName = binding.title
+            quantity = binding.secondSubTitle
+            expireDay = binding.thirdSubTitle
             favorite = binding.favorite
-            jobNme = binding.job
+            jobName = binding.firstSubTitle
         }
 
         fun bind(news: News) {
@@ -52,15 +46,10 @@ class NewsAdapter(
                 .load(news.employer!!.profilePicture)
                 .override(150, 150)
                 .into(companyPhoto)
-            if(news.isFavorite) {
-                favorite.setImageResource(R.drawable.heart_clicked)
-            }
-            else {
-                favorite.setImageResource(R.drawable.heart)
-            }
+
             companyName.text = news.employer!!.userName
-            jobNme.text = news.title
-            quantity.text = "Số lượng: ${news.quantity.toString()} người"
+            jobName.text = news.title
+            quantity.text = "${news.quantity.toString()} người"
             expireDay.text = "Hạn nộp: ${news.expireDay.toString()}"
             favorite.setOnClickListener {
                 addNewsToFavorite(news)
@@ -100,7 +89,7 @@ class NewsAdapter(
             holder.favorite.setOnClickListener {
                 if(news.isFavorite) {
                     removeNewsFromFavorite(news)
-                    holder.favorite.setImageResource(R.drawable.heart)
+                    holder.favorite.setImageResource(R.drawable.heart_gray)
                     news.isFavorite = false
                 }
                 else {
@@ -108,6 +97,7 @@ class NewsAdapter(
                     holder.favorite.setImageResource(R.drawable.heart_clicked)
                     news.isFavorite = true
                 }
+
             }
         }
         else {

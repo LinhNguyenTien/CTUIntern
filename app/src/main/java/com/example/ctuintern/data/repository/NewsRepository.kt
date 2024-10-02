@@ -16,4 +16,6 @@ class NewsRepository @Inject constructor(private val apiService: APIService) {
 
     suspend fun getFavoriteNews(userID: String) = apiService.getFavoriteNews(userID)
 
+    suspend fun getApplyNews(userID: String) = apiService.getApplyNews(userID)
+
 }
