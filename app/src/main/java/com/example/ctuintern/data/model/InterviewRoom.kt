@@ -5,5 +5,5 @@ data class InterviewRoom(
     val roomTitle: String?,
     val interviewerName: String?,
     val interviewDay: String?,
-    val duration: String?
+    val duration: Int?
 )

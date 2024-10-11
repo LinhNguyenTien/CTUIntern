@@ -69,7 +69,7 @@
                 android:id="@+id/lock"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/CV"
+                android:src="@drawable/cv"
                 android:layout_alignParentLeft="true" />
 
             <com.google.android.material.textfield.TextInputLayout

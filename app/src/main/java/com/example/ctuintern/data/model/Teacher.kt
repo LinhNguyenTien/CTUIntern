@@ -10,9 +10,9 @@ class Teacher(
     profilePicture: String,
     role: String,
     var teacherID: String,
-    var schoolName: String
+    var faculty: Faculty
 ): User(userID, userName, account, password, phone, email, profilePicture, role) {
     override fun toString(): String {
-        return "Teacher(teacherID='$teacherID', schoolName='$schoolName')"
+        return "Teacher(teacherID='$teacherID')"
     }
 }

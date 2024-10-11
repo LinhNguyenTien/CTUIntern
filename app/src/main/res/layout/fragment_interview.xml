@@ -44,6 +44,7 @@
             android:orientation="vertical"
             android:layout_alignParentTop="true"
             android:id="@+id/listJob"
+            android:backgroundTint="#F6F4F4"
             android:background="@drawable/background_list_job">
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +62,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp"
-                android:paddingVertical="5dp"
                 tools:listitem="@layout/job_item"
                 tools:itemCount="3"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

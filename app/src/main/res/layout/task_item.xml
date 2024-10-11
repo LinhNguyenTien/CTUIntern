@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/background_task_item">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskTitle"
+            android:text="Bài tập 1"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/taskState"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskContent"
+            android:text="Nội dung bài tập 1"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_below="@id/taskTitle"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskExpiredDay"
+            android:text="Thời hạn: dd/mm/yyyy"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textColor="@color/black"
+            android:layout_below="@id/taskContent"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskState"
+            android:text="Chưa nộp"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+</FrameLayout>

@@ -7,10 +7,11 @@
     app:cardCornerRadius="10dp">
     <LinearLayout
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_gravity="center">
-        <FrameLayout
+        android:background="@color/white">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue">
@@ -20,51 +21,49 @@
                 android:id="@+id/header"
                 android:text="Thông báo"
                 android:textSize="20sp"
-                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true"
                 android:textColor="@color/white"
                 android:fontFamily="@font/baloo_2_bold"
                 android:layout_margin="10dp"/>
-        </FrameLayout>
 
-        <FrameLayout
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/close"
+                android:src="@drawable/close"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/white">
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_alignParentBottom="true">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/reason"
-                android:text=""
+                android:text="Buổi phỏng vấn sẽ diển ra lúc"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 android:textColor="@color/blue"
                 android:fontFamily="@font/baloo_2_bold"/>
-        </FrameLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingHorizontal="10dp">
-            <Button
-                android:layout_width="0dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/closeBtn"
-                android:layout_weight="1"
-                android:text="Đóng"
-                android:fontFamily="@font/baloo_2_bold"
-                android:layout_marginRight="10dp"/>
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/switchApplyBtn"
-                android:layout_weight="1"
-                android:text="Ứng tuyển"
-                android:backgroundTint="@color/yellow"
+                android:id="@+id/time"
+                android:text="00h00 Ngày DD/MM/YYYY"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:textColor="@color/yellow"
                 android:fontFamily="@font/baloo_2_bold"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

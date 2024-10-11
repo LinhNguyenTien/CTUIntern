@@ -27,16 +27,35 @@
             android:text="CompanyName"
             android:textSize="20sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/baloo_2_bold"/>
-        <TextView
+            android:fontFamily="@font/baloo_2"
+            android:textStyle="bold"/>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/state"
-            android:text="@string/interviewStateWaiting"
-            android:fontFamily="@font/baloo_2_bold"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"/>
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trạng thái:"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/state"
+                android:text="Chưa phản hồi"
+                android:textStyle="bold"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +74,8 @@
                         android:layout_height="wrap_content"
                         android:text="Vị trí"
                         android:textSize="20sp"
-                        android:fontFamily="@font/baloo_2_bold"
+                        android:fontFamily="@font/baloo_2"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
                         android:layout_marginBottom="5dp"/>
                     <TextView
@@ -77,8 +97,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ngày hẹn"
+                        android:textStyle="bold"
                         android:textSize="20sp"
-                        android:fontFamily="@font/baloo_2_bold"
+                        android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
                         android:layout_marginBottom="5dp"/>
                     <TextView
@@ -99,9 +120,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Thời lượng"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30 phút"
+                        android:id="@+id/duration"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Người phỏng vấn"
                         android:textSize="20sp"
-                        android:fontFamily="@font/baloo_2_bold"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
                         android:layout_marginBottom="5dp"/>
                     <TextView
@@ -124,7 +170,8 @@
                         android:layout_height="wrap_content"
                         android:text="Mô tả công việc"
                         android:textSize="20sp"
-                        android:fontFamily="@font/baloo_2_bold"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
                         android:layout_marginBottom="5dp"/>
                     <TextView
@@ -150,10 +197,12 @@
         android:layout_marginBottom="20dp"
         android:layout_marginHorizontal="20dp"
         android:textSize="20sp"
-        android:fontFamily="@font/baloo_2_bold"/>
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo_2"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/close"
         android:src="@drawable/arrow_back_blue"
         android:background="@drawable/background_back_arrow_blue"
         android:layout_alignParentStart="true"

@@ -1,18 +1,17 @@
-package com.example.ctuintern.ui.classManagement
+package com.example.ctuintern.ui.intern
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class ClassDetailFragment : MainFragment() {
-    private val viewModel: ClassManagementViewModel by viewModels()
-
+@AndroidEntryPoint
+class TaskDetailFragment : MainFragment() {
     override fun initView() {
 
     }
@@ -34,7 +33,7 @@ class ClassDetailFragment : MainFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class_detail, container, false)
+        return inflater.inflate(R.layout.fragment_task_detail, container, false)
     }
 
 }

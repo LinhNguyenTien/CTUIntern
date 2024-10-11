@@ -1,14 +1,382 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.intern.InternFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".ui.news.NewsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/blue">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:fontFamily="@font/baloo_2_bold"
+            android:textColor="@color/light_yellow"
+            android:textSize="24sp"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile"
+            android:text="Username"
+            android:fontFamily="@font/baloo_2_bold"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
 
-</FrameLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="16dp"
+            android:layout_above="@id/bottomNavigator">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đơn vị thực tập"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Công ty:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/companyName"
+                        android:text="Company Name"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Điện thoại:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/companyPhone"
+                        android:text="Company Phone"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Địa chỉ:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/companyAddress"
+                        android:text="Company Address"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khóa thực tập"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giảng viên:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/teacherName"
+                        android:text="Teacher Name"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Điện thoại:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/teacherPhone"
+                        android:text="Teacher Phone"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email:"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/teacherEmail"
+                        android:text="Teacher Email"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bài tập"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="5dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycleView"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/task_item"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Báo cáo thực tập"
+                    android:textSize="20sp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/report"
+                        android:text="Báo cáo thực tập"
+                        android:layout_marginRight="5dp"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/baloo_2"
+                        android:textColor="@color/black"
+                        android:layout_alignParentStart="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/check"
+                        android:layout_toRightOf="@id/report"
+                        android:layout_centerVertical="true"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/uploadIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/upload"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomNavigator"
+            android:weightSum="5"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="@color/blue"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/videoCall">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/videoIcon"
+                    android:src="@drawable/video"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phỏng vấn"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/videoIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/intern">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/internIcon"
+                    android:src="@drawable/intern"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thực tập"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/internIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/news">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/newsIcon"
+                    android:src="@drawable/news"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tin tức"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/newsIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/favorite">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/favoriteIcon"
+                    android:src="@drawable/heart"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Yêu thích"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/favoriteIcon"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/apply">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/applyIcon"
+                    android:src="@drawable/apply_selected"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ứng tuyển"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/applyIcon"
+                    android:textColor="@color/hard_yellow"
+                    android:fontFamily="@font/baloo_2_bold"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

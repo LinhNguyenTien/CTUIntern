@@ -1,15 +1,18 @@
 package com.example.ctuintern.data.repository
 
 import com.example.ctuintern.data.model.CheckUser
-import com.example.ctuintern.data.model.Class
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.EmployerResponse
 import com.example.ctuintern.data.model.Field
+import com.example.ctuintern.data.model.InternProfile
 import com.example.ctuintern.data.model.Profile
+import com.example.ctuintern.data.model.ReportRequest
 import com.example.ctuintern.data.model.Student
+import com.example.ctuintern.data.model.Task
 import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
 import com.example.ctuintern.network.APIService
+import com.example.ctuintern.ulti.RecordType
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.coroutines.coroutineScope
@@ -29,6 +32,16 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
         apiService.updateCV(profile, userID)
     }
 
-    suspend fun getClasses(teacherID: String): List<Class> = apiService.getClasses(teacherID)
+    suspend fun getInternProfile(userID: String): InternProfile {
+        return apiService.getInternProfile(userID)
+    }
+
+    suspend fun getTasks(userID: String): List<Task> {
+        return apiService.getTasks(userID)
+    }
+
+    suspend fun uploadReport(reportID: String, path: String) {
+        return apiService.uploadReport(reportID, ReportRequest(path))
+    }
 
 }

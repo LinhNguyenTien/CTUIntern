@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/reason"
-                android:text="@string/emptyCVContent"
+                android:text="Vui lòng bổ sung CV"
                 android:layout_gravity="center"
                 android:textAlignment="center"
                 android:textSize="16sp"
