@@ -1,6 +1,7 @@
 package com.example.ctuintern.network
 
 import com.example.ctuintern.data.model.CheckUser
+import com.example.ctuintern.data.model.Class
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.EmployerResponse
 import com.example.ctuintern.data.model.Field
@@ -43,4 +44,7 @@ interface APIService {
 
     @PATCH("/update/CV/{userID}")
     suspend fun updateCV(@Body profile: Profile, @Path("userID") userID: String)
+
+    @GET("/classes/{teacherID}")
+    suspend fun getClasses(@Path("teacherID") teacherID: String): List<Class>
 }

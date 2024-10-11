@@ -81,7 +81,11 @@ class LoginFragment : MainFragment() {
                     loadingDialog.dismiss()
                     Log.i("authen", "user: ${it.toString()}")
                     setCurrentUser(it)
-                    checkVerifiedEmail(emailTXT, passwordTXT)
+                    when(it.role) {
+                        ROLE_STUDENT -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_STUDENT)
+                        ROLE_TEACHER -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_TEACHER)
+                        else -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_EMPLOYER)
+                    }
                 },
                 failBehavior = {
                     loadingDialog.dismiss()
@@ -90,7 +94,7 @@ class LoginFragment : MainFragment() {
         }
     }
 
-    private fun checkVerifiedEmail(email: String, password: String) {
+    private fun checkVerifiedEmail(email: String, password: String, role: String) {
         val auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -98,7 +102,14 @@ class LoginFragment : MainFragment() {
                     val firebaseUser = auth.currentUser
                     firebaseUser?.let {
                         if (firebaseUser.isEmailVerified) {
-                            navigateToFragment(binding.root, R.id.action_loginFragment_to_newsFragment)
+                            when(role) {
+                                ROLE_STUDENT -> navigateToFragment(
+                                    binding.root,
+                                    R.id.action_loginFragment_to_newsFragment
+                                )
+                                // ROLE_TEACHER
+                                // ROLE_EMPLOYER
+                            }
                         } else {
                             // Show a message asking the user to verify their email
                             showLoginFailDialog("Email chưa được xác thực\nVui lòng kiểm tra email của bạn")
@@ -141,5 +152,11 @@ class LoginFragment : MainFragment() {
         initView()
         initClick()
         return binding.root
+    }
+
+    companion object {
+        const val ROLE_STUDENT = "student"
+        const val ROLE_TEACHER = "teacher"
+        const val ROLE_EMPLOYER = "employer"
     }
 }

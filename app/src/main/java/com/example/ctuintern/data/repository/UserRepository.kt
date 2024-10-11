@@ -1,6 +1,7 @@
 package com.example.ctuintern.data.repository
 
 import com.example.ctuintern.data.model.CheckUser
+import com.example.ctuintern.data.model.Class
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.EmployerResponse
 import com.example.ctuintern.data.model.Field
@@ -27,5 +28,7 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
     suspend fun updateCV(profile: Profile, userID: String) {
         apiService.updateCV(profile, userID)
     }
+
+    suspend fun getClasses(teacherID: String): List<Class> = apiService.getClasses(teacherID)
 
 }
