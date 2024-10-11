@@ -147,6 +147,9 @@
         android:name="com.example.ctuintern.ui.intern.InternFragment"
         android:label="fragment_intern"
         tools:layout="@layout/fragment_intern" >
+        <argument
+            android:name="task"
+            app:argType="com.example.ctuintern.data.model.Task"/>
         <action
             android:id="@+id/action_internFragment_to_interviewFragment"
             app:destination="@id/interviewFragment" />
@@ -162,9 +165,6 @@
         <action
             android:id="@+id/action_internFragment_to_taskDetailFragment"
             app:destination="@id/taskDetailFragment" />
-        <argument
-            android:name="task"
-            app:argType="com.example.ctuintern.data.model.Task"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

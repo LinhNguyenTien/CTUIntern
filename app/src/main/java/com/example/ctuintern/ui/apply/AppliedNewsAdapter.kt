@@ -14,7 +14,7 @@ import com.example.ctuintern.data.model.News
 import com.example.ctuintern.databinding.JobItemBinding
 
 class AppliedNewsAdapter(
-    private val showDetail: ((News) -> Unit)? = null
+    private val showDetail: ((AppliedNews) -> Unit)? = null
 ): RecyclerView.Adapter<AppliedNewsAdapter.ViewHolder>() {
     private lateinit var newList: List<AppliedNews>
 
@@ -23,7 +23,7 @@ class AppliedNewsAdapter(
     }
 
     class ViewHolder(private val binding: JobItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(news: AppliedNews, showDetail: ((News) -> Unit)? = null) {
+        fun bind(news: AppliedNews, showDetail: ((AppliedNews) -> Unit)? = null) {
             binding.title.text = news.news?.employer?.userName
             binding.firstSubTitle.text = news.news?.title
             binding.secondSubTitle.text = "Số lượng: ${news.news?.quantity} người"
@@ -36,9 +36,8 @@ class AppliedNewsAdapter(
                 .error(R.drawable.default_company)
                 .into(binding.companyLogo)
 
-            // init click for view holder
             binding.root.setOnClickListener {
-                showDetail?.invoke(news.news!!)
+                showDetail?.invoke(news)
             }
         }
     }

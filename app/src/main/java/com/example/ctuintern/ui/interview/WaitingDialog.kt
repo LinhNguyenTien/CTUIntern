@@ -17,7 +17,7 @@ class WaitingDialog(context: Context, val time: LocalDateTime): Dialog(context) 
         super.onCreate(savedInstanceState)
         _binding = WaitingDialogBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val outputFormatter = DateTimeFormatter.ofPattern("HH:mm:ss ngày dd-MM-yyyy")
+        val outputFormatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy")
         val formattedTime = time.format(outputFormatter)
         binding.time.text = formattedTime
         binding.close.setOnClickListener { dismiss() }

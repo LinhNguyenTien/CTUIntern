@@ -14,10 +14,12 @@ import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.databinding.FragmentFavoriteBinding
 import com.example.ctuintern.databinding.FragmentInterviewBinding
+import com.example.ctuintern.ui.apply.AppliedNewsAdapter
 import com.example.ctuintern.ui.favorite.FavoriteFragmentDirections
 import com.example.ctuintern.ui.favorite.FavoriteViewModel
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.internal.filterList
 
 @AndroidEntryPoint
 class InterviewFragment : MainFragment() {
@@ -36,7 +38,7 @@ class InterviewFragment : MainFragment() {
                     val adapter = AppliedNewsAdapter { news ->
                         navigateToFragment(binding.root, InterviewFragmentDirections.actionInterviewFragmentToInterviewDetailFragment(news))
                     }
-                    adapter.setDataSet(newsList)
+                    adapter.setDataSet(newsList.filter { it.room != null })
                     binding.recyclerView.adapter = adapter
                 }
             }
