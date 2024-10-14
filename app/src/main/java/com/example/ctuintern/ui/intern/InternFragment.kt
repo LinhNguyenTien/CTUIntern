@@ -11,18 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.InternProfile
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Student
-import com.example.ctuintern.databinding.FragmentApplyBinding
 import com.example.ctuintern.databinding.FragmentInternBinding
-import com.example.ctuintern.ui.interview.WaitingDialog
 import com.example.ctuintern.ui.main.MainFragment
-import com.example.ctuintern.ui.profile.ProfileFragment
 import com.example.ctuintern.ui.profile.ResultUpdateCVDialog
-import com.example.ctuintern.ulti.RecordType
 import com.example.ctuintern.ulti.UploadState
 import dagger.hilt.android.AndroidEntryPoint
 

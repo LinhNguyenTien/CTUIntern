@@ -1,8 +1,6 @@
 package com.example.ctuintern.ui.login
 
 import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.Student
@@ -10,9 +8,6 @@ import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
 import com.example.ctuintern.data.repository.UserRepository
 import com.example.ctuintern.ui.main.MainViewModel
-import com.example.ctuintern.ulti.FirebaseController
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

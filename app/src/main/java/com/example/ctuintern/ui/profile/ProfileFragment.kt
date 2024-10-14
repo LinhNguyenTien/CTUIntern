@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +44,7 @@ class ProfileFragment : MainFragment() {
     private val binding get() = _binding!!
     private lateinit var user: User
     private lateinit var student: Student
-    private lateinit var recycleView: RecyclerView
+    private var folder = ""
     private val viewModel: ProfileViewModel by viewModels()
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -96,6 +97,13 @@ class ProfileFragment : MainFragment() {
         })
     }
 
+    private fun logout() {
+        requireActivity().supportFragmentManager.popBackStack(
+            null,  // Pop everything from the back stack
+            FragmentManager.POP_BACK_STACK_INCLUSIVE  // Inclusive to include the topmost fragment
+        )
+    }
+
     private fun setupEmployerUI(employer: Employer) {
         binding.name.text = employer.userName
         binding.field.text = employer.field
@@ -127,6 +135,7 @@ class ProfileFragment : MainFragment() {
             .load(student.profilePicture)
             .transform(CircleCrop())
             .override(150,150)
+            .error(R.drawable.default_user)
             .into(binding.profilePicture)
         binding.CVFrame.setOnClickListener {
             if(student.profile.CVPath.isNullOrEmpty()) {
@@ -136,7 +145,7 @@ class ProfileFragment : MainFragment() {
                         val uploadCVDialog = UploadCVDialog(
                             context =  requireContext(),
                             uploadCV = {
-                                openFilePicker()
+                                openFilePicker("application/pdf")
                             }
                         )
                         showRoundedDialog(uploadCVDialog)
@@ -163,9 +172,11 @@ class ProfileFragment : MainFragment() {
         dialog.show()
     }
 
-    private fun openFilePicker() {
+    private fun openFilePicker(fileTypes: String = "*/*") {
+        folder = if(fileTypes == "application/pdf") "CV"
+        else "ProfilePicture"
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-            type = "*/*"
+            type = fileTypes
             addCategory(Intent.CATEGORY_OPENABLE)
         }
         startActivityForResult(intent, PICK_FILE_REQUEST_CODE)
@@ -175,8 +186,9 @@ class ProfileFragment : MainFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
-                viewModel.uploadCVToFirebaseStorage(student, uri) {
+                viewModel.uploadResourceToFBS(student, folder, uri) {
                     student.profile.CVPath = it
+                    Log.i("Profile fragment", "CV Path: ${student.profile.CVPath}")
                 }
             }
         }
@@ -204,14 +216,27 @@ class ProfileFragment : MainFragment() {
 
     override fun initClick() {
         binding.updateBtn.setOnClickListener {
-
-        }
-        binding.logout.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_profileFragment_to_loginFragment)
-            setCurrentUser(null)
+            showRoundedDialog(
+                UpdateInfoDialog(
+                    context = requireContext(),
+                    updateCV = { openFilePicker("application/pdf") },
+                    updateProfile = {
+                        newPhone -> run {
+                            student.phone = newPhone
+                            viewModel.updateProfile(student)
+                        }
+                    }
+                )
+            )
         }
         binding.backBtn.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_profileFragment_to_newsFragment)
+            backToPreviousFragment()
+        }
+        binding.updateProfilePicture.setOnClickListener {
+            openFilePicker("application/png, application/jpeg, application/jpg")
+        }
+        binding.logout.setOnClickListener {
+            logout()
         }
     }
 

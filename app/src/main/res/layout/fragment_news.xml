@@ -53,13 +53,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/companyIcon"
+                android:layout_centerHorizontal="true"
                 app:cardCornerRadius="100dp"
-                android:layout_margin="5dp"
                 android:elevation="0dp"
                 app:cardBackgroundColor="@color/white">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/company"
                     android:padding="10dp"/>
             </androidx.cardview.widget.CardView>
@@ -85,12 +85,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/jobIcon"
                 app:cardCornerRadius="100dp"
-                android:layout_margin="5dp"
                 android:elevation="0dp"
+                android:layout_centerHorizontal="true"
                 app:cardBackgroundColor="@color/white">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/job"
                     android:padding="10dp"/>
             </androidx.cardview.widget.CardView>
@@ -116,12 +116,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/locationIcon"
                 app:cardCornerRadius="100dp"
-                android:layout_margin="5dp"
                 android:elevation="0dp"
+                android:layout_centerHorizontal="true"
                 app:cardBackgroundColor="@color/white">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/position"
                     android:padding="10dp"/>
             </androidx.cardview.widget.CardView>
@@ -147,12 +147,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/techIcon"
                 app:cardCornerRadius="100dp"
-                android:layout_margin="5dp"
                 android:elevation="0dp"
+                android:layout_centerHorizontal="true"
                 app:cardBackgroundColor="@color/white">
                 <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:src="@drawable/tech"
                     android:padding="10dp"/>
             </androidx.cardview.widget.CardView>
@@ -176,6 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_above="@id/bottomNavigator"
             android:layout_alignParentTop="true"
             android:id="@+id/listJob"
             android:background="@drawable/background_list_job">
@@ -194,11 +195,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="10dp"
+                tools:itemCount="4"
+                tools:listitem="@layout/job_item"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/bottomNavigator"
             android:weightSum="5"
             android:orientation="horizontal"
             android:padding="10dp"

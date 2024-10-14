@@ -5,32 +5,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/emailFrame"
+            android:background="@color/blue">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/header"
+                android:text="Cập nhật"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white"
+                android:fontFamily="@font/baloo_2_bold"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/close"
+                android:src="@drawable/close"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneFrame"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="20dp"
             android:background="@drawable/background_input_account">
 
             <ImageView
-                android:id="@+id/emailIcon"
+                android:id="@+id/phoneIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/phone" />
+                android:src="@drawable/email" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="10dp"
-                android:layout_toRightOf="@id/emailIcon"
+                android:layout_toRightOf="@id/phoneIcon"
                 android:padding="0dp"
                 app:boxBackgroundMode="none"
                 app:boxCornerRadiusBottomEnd="10dp"
@@ -40,7 +65,7 @@
                 app:passwordToggleTint="@color/blue">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -48,7 +73,6 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:padding="10dp"
-                    android:text="linhb2012108@student.ctu.edu.vn"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/black"
                     android:textSize="20sp" />
@@ -60,49 +84,41 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emailFrame"
+            android:id="@+id/updateCV"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
+            android:paddingVertical="20dp"
             android:background="@drawable/background_input_account">
+
             <ImageView
+                android:id="@+id/CVIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/lock"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/cv"
-                android:layout_alignParentLeft="true" />
+                android:src="@drawable/cv" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true"
-                android:layout_toRightOf="@id/lock"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
-                app:passwordToggleTint="@color/blue"
-                app:boxBackgroundMode="none"
-                android:padding="0dp"
-                android:layout_marginBottom="10dp"
-                android:layout_centerVertical="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/password"
-                    android:inputType="textPassword"
-                    android:textSize="20sp"
-                    android:text="Linh123@"
-                    android:textColor="@color/blue"
-                    android:fontFamily="@font/baloo_2"
-                    android:hint="@string/password"
-                    android:textColorHint="@color/black"
-                    android:padding="0dp"
-                    android:layout_marginBottom="10dp"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:textSize="20sp"
+                android:fontFamily="@font/baloo_2"
+                android:text="Cập nhật CV"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"/>
 
         </RelativeLayout>
-    </RelativeLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateButton"
+            android:text="Cập nhật thông tin"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:layout_marginHorizontal="20dp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -2,18 +2,16 @@ package com.example.ctuintern.network
 
 import com.example.ctuintern.data.model.AppliedNews
 import com.example.ctuintern.data.model.CheckUser
+import com.example.ctuintern.data.model.Class
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.EmployerResponse
-import com.example.ctuintern.data.model.Field
 import com.example.ctuintern.data.model.InternProfile
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Profile
 import com.example.ctuintern.data.model.ReportRequest
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Task
-import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
-import com.example.ctuintern.ulti.UserRole
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.Body
@@ -21,7 +19,6 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface APIService {
 
@@ -60,4 +57,14 @@ interface APIService {
 
     @POST("/uploadReport/{reportID}")
     suspend fun uploadReport(@Path("reportID") reportID: String, @Body path: ReportRequest)
+
+    @GET("/classes/{teacherID}")
+    suspend fun getClasses(@Path("teacherID") teacherID: String): List<Class>
+
+    @POST("/updateProfilePicture/{studentID}")
+    suspend fun updateProfilePicture(@Path("studentID") studentID: String, @Body path: ReportRequest)
+
+    @PATCH("/updateProfile")
+    suspend fun updateProfile(@Body user: User): Response<User>
+
 }

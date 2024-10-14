@@ -10,7 +10,6 @@ import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Task
 import com.example.ctuintern.data.repository.UserRepository
 import com.example.ctuintern.ui.main.MainViewModel
-import com.example.ctuintern.ulti.RecordType
 import com.example.ctuintern.ulti.UploadState
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage

@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.ctuintern.data.model.ReportRequest
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.repository.UserRepository
 import com.example.ctuintern.ui.main.MainViewModel
@@ -17,16 +18,28 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
 
     private val _uploadState: MutableLiveData<UploadState> = MutableLiveData(UploadState.WAITING)
     val uploadState: LiveData<UploadState> get() = _uploadState
-    fun updateCV(student: Student) {
+    private fun updateCV(student: Student) {
         viewModelScope.launch {
             userRepository.updateCV(student.profile, student.userID)
         }
     }
 
-    fun uploadCVToFirebaseStorage(student: Student, uri: Uri, callback:(String) -> Unit) {
+    private fun updateProfilePicture(student: Student, newPath: String) {
+        viewModelScope.launch {
+            userRepository.updateProfilePicture(student.userID, ReportRequest(newPath))
+        }
+    }
+
+    fun updateProfile(student: Student) {
+        viewModelScope.launch {
+            userRepository.updateProfile(student)
+        }
+    }
+
+    fun uploadResourceToFBS(student: Student, folder: String, uri: Uri, callback:(String) -> Unit) {
         val storage = Firebase.storage
         val cvRef = storage.reference
-        val fileRef = cvRef.child("CV/${student.userID}/${uri.lastPathSegment}")
+        val fileRef = cvRef.child("$folder/${student.userID}/${uri.lastPathSegment}")
         var uploadTask = fileRef.putFile(uri)
 
         // Register observers to listen for when the download is done or if it fails
@@ -35,9 +48,14 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
         }.addOnSuccessListener {
             _uploadState.value = UploadState.SUCCESS
             val newPath = it.metadata!!.path
-            student.profile.CVPath = newPath
-            callback(newPath)
-            updateCV(student)
+            if(folder == "CV") {
+                student.profile.CVPath = newPath
+                callback(newPath)
+                updateCV(student)
+            }
+            else {
+                updateProfilePicture(student, newPath)
+            }
         }
     }
 

@@ -63,6 +63,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Công ty:"
+                        android:id="@+id/companyNameLabel"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
@@ -72,10 +73,12 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/companyName"
                         android:text="Company Name"
+                        android:layout_toRightOf="@id/companyNameLabel"
+                        android:textAlignment="textEnd"
+                        android:layout_alignParentEnd="true"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
-                        android:textColor="@color/black"
-                        android:layout_alignParentEnd="true"/>
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -85,6 +88,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/companyPhoneLabel"
                         android:text="Điện thoại:"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
@@ -98,6 +102,8 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
+                        android:layout_toRightOf="@id/companyPhoneLabel"
+                        android:textAlignment="textEnd"
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
 
@@ -109,6 +115,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Địa chỉ:"
+                        android:id="@+id/companyAddressLabel"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
@@ -118,10 +125,12 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/companyAddress"
                         android:text="Company Address"
+                        android:layout_toRightOf="@id/companyAddressLabel"
+                        android:textAlignment="textEnd"
+                        android:layout_alignParentEnd="true"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
-                        android:textColor="@color/black"
-                        android:layout_alignParentEnd="true"/>
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
                 <TextView
                     android:layout_width="wrap_content"
@@ -141,6 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Giảng viên:"
+                        android:id="@+id/teacherNameLabel"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
@@ -153,6 +163,8 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
+                        android:layout_toRightOf="@id/teacherNameLabel"
+                        android:textAlignment="textEnd"
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
 
@@ -164,6 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Điện thoại:"
+                        android:id="@+id/teacherPhoneLabel"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
@@ -176,6 +189,8 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
+                        android:layout_toRightOf="@id/teacherPhoneLabel"
+                        android:textAlignment="textEnd"
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
 
@@ -187,6 +202,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email:"
+                        android:id="@+id/teacherEmailLabel"
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
@@ -199,6 +215,8 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/baloo_2"
                         android:textColor="@color/black"
+                        android:layout_toRightOf="@id/teacherEmailLabel"
+                        android:textAlignment="textEnd"
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
 

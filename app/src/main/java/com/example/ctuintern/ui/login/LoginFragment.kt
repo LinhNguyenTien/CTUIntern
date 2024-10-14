@@ -107,7 +107,10 @@ class LoginFragment : MainFragment() {
                                     binding.root,
                                     R.id.action_loginFragment_to_newsFragment
                                 )
-                                // ROLE_TEACHER
+                                ROLE_TEACHER -> navigateToFragment(
+                                    binding.root,
+                                    R.id.action_loginFragment_to_classManagementFragment
+                                )
                                 // ROLE_EMPLOYER
                             }
                         } else {
