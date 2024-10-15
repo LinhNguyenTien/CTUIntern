@@ -12,6 +12,8 @@ import com.example.ctuintern.data.model.Task
 import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
 import com.example.ctuintern.network.APIService
+import com.example.ctuintern.ui.login.LoginViewModel
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import retrofit2.Response
 import javax.inject.Inject
@@ -44,22 +46,7 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
     suspend fun getClasses(teacherID: String): List<Class> = apiService.getClasses(teacherID)
 
     suspend fun updateProfilePicture(studentID: String, path: ReportRequest) = apiService.updateProfilePicture(studentID, path)
-    suspend fun updateProfile(user: User): Response<User> {
-        var requestUser: User? = null
-        requestUser = when(user) {
-            is Student -> {
-                user as Student
-            }
 
-            is Teacher -> {
-                user as Teacher
-            }
-
-            else -> {
-                user as Employer
-            }
-        }
-        return apiService.updateProfile(requestUser)
-    }
+    suspend fun updateProfile(user: User) = apiService.updateProfile(user)
 
 }

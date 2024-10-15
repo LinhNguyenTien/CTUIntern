@@ -56,11 +56,20 @@ class FavoriteFragment : MainFragment() {
     }
 
     override fun initClick() {
-        binding.profile.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_profileFragment)
-        }
         binding.news.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_favoriteFragment_to_newsFragment)
+        }
+        binding.videoCall.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_interviewFragment)
+        }
+        binding.intern.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_internFragment)
+        }
+        binding.apply.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_applyFragment)
+        }
+        binding.profile.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_favoriteFragment_to_profileFragment)
         }
     }
 

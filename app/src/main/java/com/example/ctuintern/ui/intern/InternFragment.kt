@@ -105,7 +105,21 @@ class InternFragment : MainFragment() {
     }
 
     override fun initClick() {
-
+        binding.news.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_internFragment_to_newsFragment)
+        }
+        binding.videoCall.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_internFragment_to_interviewFragment)
+        }
+        binding.apply.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_internFragment_to_applyFragment)
+        }
+        binding.favorite.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_internFragment_to_favoriteFragment)
+        }
+        binding.profile.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_internFragment_to_profileFragment)
+        }
     }
 
     override fun showNewsDetail(news: News) {

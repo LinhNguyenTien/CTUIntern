@@ -49,6 +49,18 @@ class InterviewFragment : MainFragment() {
         binding.profile.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_interviewFragment_to_profileFragment)
         }
+        binding.news.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_interviewFragment_to_newsFragment)
+        }
+        binding.intern.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_interviewFragment_to_internFragment)
+        }
+        binding.favorite.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_interviewFragment_to_favoriteFragment)
+        }
+        binding.apply.setOnClickListener {
+            navigateToFragment(binding.root, R.id.action_interviewFragment_to_applyFragment)
+        }
     }
 
     override fun showNewsDetail(news: News) {

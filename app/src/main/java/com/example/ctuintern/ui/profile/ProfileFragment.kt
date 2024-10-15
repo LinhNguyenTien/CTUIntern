@@ -95,6 +95,15 @@ class ProfileFragment : MainFragment() {
                 viewModel.resetUploadState()
             }
         })
+
+        viewModel.newProfilePath.observe(viewLifecycleOwner, Observer {
+            Glide.with(requireContext())
+                .load(it)
+                .transform(CircleCrop())
+                .override(150,150)
+                .error(R.drawable.default_user)
+                .into(binding.profilePicture)
+        })
     }
 
     private fun logout() {
@@ -223,6 +232,7 @@ class ProfileFragment : MainFragment() {
                     updateProfile = {
                         newPhone -> run {
                             student.phone = newPhone
+                            binding.phone.text = newPhone
                             viewModel.updateProfile(student)
                         }
                     }
@@ -230,7 +240,7 @@ class ProfileFragment : MainFragment() {
             )
         }
         binding.backBtn.setOnClickListener {
-            backToPreviousFragment()
+            requireActivity().supportFragmentManager.popBackStack()
         }
         binding.updateProfilePicture.setOnClickListener {
             openFilePicker("application/png, application/jpeg, application/jpg")

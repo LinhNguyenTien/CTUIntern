@@ -26,7 +26,14 @@ class UpdateInfoDialog(
                 dismiss()
             }
             updateButton.setOnClickListener {
-                updateProfile(binding.phone.text.toString())
+                val newPhone = binding.phone.text.toString().trim()
+                if(newPhone.isNotEmpty()) {
+                    updateProfile(binding.phone.text.toString())
+                    dismiss()
+                }
+                else {
+                    dismiss()
+                }
             }
         }
     }

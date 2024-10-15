@@ -47,6 +47,4 @@ abstract class MainFragment: Fragment() {
     }
 
     abstract fun showNewsDetail(news: News)
-
-    fun backToPreviousFragment() = (requireActivity() as MainActivity).backToPreviousFragment()
 }
