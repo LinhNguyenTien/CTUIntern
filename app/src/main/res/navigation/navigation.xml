@@ -330,9 +330,6 @@
         <argument
             android:name="class"
             app:argType="com.example.ctuintern.data.model.Class"/>
-        <argument
-            android:name="student"
-            app:argType="com.example.ctuintern.data.model.Student"/>
     </fragment>
     <fragment
         android:id="@+id/taskDetailFragment"
