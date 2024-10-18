@@ -1,18 +1,25 @@
 package com.example.ctuintern.ui.classManagement
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
+import com.example.ctuintern.databinding.FragmentStudentDetailBinding
 import com.example.ctuintern.ui.main.MainFragment
+
 class StudentDetailFragment : MainFragment() {
+    private var _binding: FragmentStudentDetailBinding? = null
+    private val binding get() = _binding!!
     override fun initView() {
+        binding.apply {
+            studentName.text
+        }
     }
     override fun initClick() {
+
     }
     override fun showNewsDetail(news: News) {
+
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +29,9 @@ class StudentDetailFragment : MainFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_detail, container, false)
+        _binding = FragmentStudentDetailBinding.inflate(inflater, container, false)
+        initView()
+        initClick()
+        return binding.root
     }
 }
