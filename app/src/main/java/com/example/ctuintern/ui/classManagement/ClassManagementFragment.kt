@@ -24,9 +24,11 @@ class ClassManagementFragment : MainFragment() {
             binding.profile.text = teacher.userName
             viewModel.initView(teacher.userID)
             viewModel.classes.observe(viewLifecycleOwner, Observer {
-                val adapter = ClassAdapter() {
-                    // navigate to a detail class fragment
-                }
+                val adapter = ClassAdapter(
+                    showDetail = {
+                        navigateToFragment(binding.root, ClassManagementFragmentDirections.actionClassManagementFragmentToClassDetailFragment(it))
+                    }
+                )
                 adapter.setDataSet(it)
                 binding.recyclerView.adapter = adapter
             })

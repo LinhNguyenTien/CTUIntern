@@ -44,6 +44,7 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
     suspend fun getClasses(teacherID: String): List<Class> = apiService.getClasses(teacherID)
 
     suspend fun updateProfilePicture(studentID: String, path: ReportRequest) = apiService.updateProfilePicture(studentID, path)
+
     suspend fun updateProfile(user: User): Response<User> {
         var requestUser: User? = null
         requestUser = when(user) {

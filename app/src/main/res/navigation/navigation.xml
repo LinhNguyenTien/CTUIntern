@@ -261,6 +261,9 @@
         <action
             android:id="@+id/action_classManagementFragment_to_classDetailFragment"
             app:destination="@id/classDetailFragment" />
+        <argument
+            android:name="class"
+            app:argType="com.example.ctuintern.data.model.Class"/>
     </fragment>
     <fragment
         android:id="@+id/processFragment"
@@ -311,7 +314,11 @@
         android:id="@+id/studentDetailFragment"
         android:name="com.example.ctuintern.ui.classManagement.StudentDetailFragment"
         android:label="fragment_student_detail"
-        tools:layout="@layout/fragment_student_detail" />
+        tools:layout="@layout/fragment_student_detail">
+        <argument
+            android:name="student"
+            app:argType="com.example.ctuintern.data.model.Student"/>
+    </fragment>
     <fragment
         android:id="@+id/classDetailFragment"
         android:name="com.example.ctuintern.ui.classManagement.ClassDetailFragment"
@@ -320,6 +327,12 @@
         <action
             android:id="@+id/action_classDetailFragment_to_studentDetailFragment"
             app:destination="@id/studentDetailFragment" />
+        <argument
+            android:name="class"
+            app:argType="com.example.ctuintern.data.model.Class"/>
+        <argument
+            android:name="student"
+            app:argType="com.example.ctuintern.data.model.Student"/>
     </fragment>
     <fragment
         android:id="@+id/taskDetailFragment"

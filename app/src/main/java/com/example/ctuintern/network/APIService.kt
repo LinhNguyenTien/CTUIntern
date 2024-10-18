@@ -67,4 +67,10 @@ interface APIService {
     @PATCH("/updateProfile")
     suspend fun updateProfile(@Body user: User): Response<User>
 
+    @GET("/studentList/{classID}")
+    suspend fun getStudentList(@Path("classID") classID: String): List<Student>
+
+    @GET("/taskList/{classID}")
+    suspend fun getTaskList(@Path("classID") classID: String): List<Task>
+
 }
