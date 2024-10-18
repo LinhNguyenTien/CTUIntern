@@ -48,7 +48,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/email" />
+                android:src="@drawable/phone" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -70,8 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/baloo_2"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
+                    android:hint="Phone"
+                    android:inputType="phone"
                     android:padding="10dp"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/black"
@@ -119,6 +119,7 @@
             android:textSize="20sp"
             android:fontFamily="@font/baloo_2"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="20dp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

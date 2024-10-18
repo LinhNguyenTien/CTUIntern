@@ -19,6 +19,7 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface APIService {
 
@@ -65,12 +66,14 @@ interface APIService {
     suspend fun updateProfilePicture(@Path("studentID") studentID: String, @Body path: ReportRequest)
 
     @PATCH("/updateProfile")
-    suspend fun updateProfile(@Body user: User): Response<User>
+    suspend fun updateProfile(@Body user: User)
 
     @GET("/studentList/{classID}")
     suspend fun getStudentList(@Path("classID") classID: String): List<Student>
 
     @GET("/taskList/{classID}")
     suspend fun getTaskList(@Path("classID") classID: String): List<Task>
-
+  
+    @POST("/search")
+    suspend fun searchNews(@Query("search") search: String): List<News>
 }

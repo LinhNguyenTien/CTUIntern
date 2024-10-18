@@ -162,6 +162,9 @@
         <action
             android:id="@+id/action_internFragment_to_taskDetailFragment"
             app:destination="@id/taskDetailFragment" />
+        <action
+            android:id="@+id/action_internFragment_to_profileFragment"
+            app:destination="@id/profileFragment"/>
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

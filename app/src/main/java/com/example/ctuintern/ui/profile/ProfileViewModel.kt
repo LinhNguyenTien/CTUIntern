@@ -18,6 +18,9 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
 
     private val _uploadState: MutableLiveData<UploadState> = MutableLiveData(UploadState.WAITING)
     val uploadState: LiveData<UploadState> get() = _uploadState
+
+    private val _newProfilePath: MutableLiveData<String> = MutableLiveData()
+    val newProfilePath: LiveData<String> get() = _newProfilePath
     private fun updateCV(student: Student) {
         viewModelScope.launch {
             userRepository.updateCV(student.profile, student.userID)
@@ -54,6 +57,7 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
                 updateCV(student)
             }
             else {
+                _newProfilePath.value = newPath
                 updateProfilePicture(student, newPath)
             }
         }
