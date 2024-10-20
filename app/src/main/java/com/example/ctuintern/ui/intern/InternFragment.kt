@@ -75,9 +75,9 @@ class InternFragment : MainFragment() {
         binding.apply {
             profile.text = student.userName
 
-            companyName.text = ip.news.employer?.userName
-            companyPhone.text = ip.news.employer?.phone
-            companyAddress.text = ip.news.location
+            companyName.text = ip.news?.employer?.userName
+            companyPhone.text = ip.news?.employer?.phone
+            companyAddress.text = ip.news?.location
 
             teacherName.text = ip.student.classCTU.teacher.userName
             teacherPhone.text = ip.student.classCTU.teacher.phone

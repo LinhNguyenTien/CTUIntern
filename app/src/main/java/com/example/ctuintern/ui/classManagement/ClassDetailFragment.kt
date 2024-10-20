@@ -28,7 +28,7 @@ class ClassDetailFragment : MainFragment() {
 
                 val adapter = StudentAdapter(
                     showStudentDetail = {
-                        // navigate to student detail fragment
+                        navigateToFragment(root, ClassDetailFragmentDirections.actionClassDetailFragmentToStudentDetailFragment(it))
                     }
                 )
                 adapter.setDataset(it)

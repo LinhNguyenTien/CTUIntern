@@ -319,8 +319,8 @@
         android:label="fragment_student_detail"
         tools:layout="@layout/fragment_student_detail">
         <argument
-            android:name="student"
-            app:argType="com.example.ctuintern.data.model.Student"/>
+            android:name="internProfile"
+            app:argType="com.example.ctuintern.data.model.InternProfile"/>
     </fragment>
     <fragment
         android:id="@+id/classDetailFragment"
@@ -329,7 +329,11 @@
         tools:layout="@layout/fragment_class_detail" >
         <action
             android:id="@+id/action_classDetailFragment_to_studentDetailFragment"
-            app:destination="@id/studentDetailFragment" />
+            app:destination="@id/studentDetailFragment">
+            <argument
+                android:name="student"
+                app:argType="com.example.ctuintern.data.model.InternProfile"/>
+        </action>
         <argument
             android:name="class"
             app:argType="com.example.ctuintern.data.model.Class"/>

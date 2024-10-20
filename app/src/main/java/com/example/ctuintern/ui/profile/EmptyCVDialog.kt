@@ -3,10 +3,7 @@ package com.example.ctuintern.ui.profile
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import com.bumptech.glide.Glide
 import com.example.ctuintern.databinding.EmptyCvDialogBinding
-import com.example.ctuintern.databinding.ShowFullScreenDialogBinding
-import com.example.ctuintern.databinding.UploadCvDialogBinding
 
 class EmptyCVDialog(context: Context, private val addCV:()->Unit): Dialog(context) {
     private var _binding: EmptyCvDialogBinding? = null
