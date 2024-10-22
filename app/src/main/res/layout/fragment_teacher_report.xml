@@ -304,8 +304,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
-                        android:text="III.2. Hoàn thành công việc được giao"
+                        android:text="Tổng cộng"
                         android:textAlignment="textStart"
+                        android:textStyle="bold"
                         android:fontFamily="@font/baloo_2"
                         android:padding="3dp"
                         android:background="@drawable/background_report_cell"/>
@@ -313,7 +314,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:id="@+id/III2score"
+                        android:id="@+id/totalScore"
                         android:fontFamily="@font/baloo_2"
                         android:textStyle="bold"
                         android:gravity="center"
@@ -325,7 +326,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="8"
-                        android:text="III.3. Kết quả công việc có đóng góp cho cơ quan nơi thực tập"
+                        android:text="Điểm trừ"
                         android:textAlignment="textStart"
                         android:padding="3dp"
                         android:fontFamily="@font/baloo_2"
@@ -334,7 +335,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:id="@+id/III3score"
+                        android:id="@+id/minusScore"
                         android:textStyle="bold"
                         android:fontFamily="@font/baloo_2"
                         android:gravity="center"
@@ -345,17 +346,16 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_weight="8"
-                        android:text="Cộng"
+                        android:text="Điểm còn lại"
                         android:textStyle="bold"
                         android:fontFamily="@font/baloo_2"
-                        android:textAlignment="center"
                         android:padding="3dp"
                         android:background="@drawable/background_report_cell"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:id="@+id/total"
+                        android:id="@+id/restScore"
                         android:textStyle="bold"
                         android:fontFamily="@font/baloo_2"
                         android:textAlignment="center"
@@ -363,195 +363,6 @@
                         android:background="@drawable/background_report_cell"/>
                 </TableRow>
             </TableLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/otherStudentReview"
-                android:text="Nhận xét khác về sinh viên:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-            <!--            review course-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phần đánh giá chương trình đào tạo"
-                android:textSize="20sp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chúng tôi nhận thấy chương trình đào tạo:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check1"
-                    android:checked="false"
-                    android:layout_alignParentStart="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phù hợp với thực tế"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/baloo_2"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/check1"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check2"
-                    android:checked="false"
-                    android:layout_alignParentStart="true"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Không phù hợp với thực tế"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/baloo_2"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/check2"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check3"
-                    android:checked="false"
-                    android:layout_alignParentStart="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tăng cường kỹ năng mềm"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/baloo_2"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/check3"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check4"
-                    android:checked="false"
-                    android:layout_alignParentStart="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tăng cường ngoại ngữ"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/baloo_2"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/check4"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/check5"
-                    android:checked="false"
-                    android:layout_alignParentStart="true"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tăng cường kỹ năng làm việc nhóm"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/baloo_2"
-                    android:textColor="@color/black"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/check5"/>
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/otherReview"
-                android:text="Đề xuất góp ý về chương trình đào tạo:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
-            <!--            Approve section-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xác nhận của đơn vị"
-                android:textSize="20sp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mentorName2"
-                android:text="Cán bộ hướng dẫn:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thông tin liên hệ:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mentorEmail"
-                android:text="Email:"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mentorPhone2"
-                android:text="Điện thoại:"
-                android:textSize="16sp"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

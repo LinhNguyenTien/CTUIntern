@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/background_task_item">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskTitle"
+            android:text="Company Name"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/major"
+            android:text="Chuyên ngành:"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/black"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@id/taskTitle"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/review"
+            android:text="Đánh giá:"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_below="@id/major"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/taskExpiredDay"
+            android:text="Ngày đánh giá:"
+            android:textSize="20sp"
+            android:fontFamily="@font/baloo_2"
+            android:textColor="@color/black"
+            android:layout_below="@id/review"/>
+    </RelativeLayout>
+</FrameLayout>
