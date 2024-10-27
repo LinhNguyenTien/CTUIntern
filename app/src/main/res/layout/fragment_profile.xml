@@ -57,7 +57,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/updateProfilePicture"
-                    android:src="@drawable/edit"
+                    android:src="@drawable/edit_profile_picture"
                     android:layout_toEndOf="@id/profilePicture"
                     android:layout_alignBottom="@id/profilePicture"/>
             </RelativeLayout>

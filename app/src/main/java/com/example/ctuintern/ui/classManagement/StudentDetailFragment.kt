@@ -18,8 +18,9 @@ import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.databinding.FragmentStudentDetailBinding
 import com.example.ctuintern.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.UUID
-
+@AndroidEntryPoint
 class StudentDetailFragment : MainFragment() {
     private var _binding: FragmentStudentDetailBinding? = null
     private val binding get() = _binding!!

@@ -265,7 +265,7 @@
             android:id="@+id/action_classManagementFragment_to_classDetailFragment"
             app:destination="@id/classDetailFragment" />
         <argument
-            android:name="class"
+            android:name="myClass"
             app:argType="com.example.ctuintern.data.model.Class"/>
     </fragment>
     <fragment
@@ -331,11 +331,11 @@
             android:id="@+id/action_classDetailFragment_to_studentDetailFragment"
             app:destination="@id/studentDetailFragment">
             <argument
-                android:name="student"
+                android:name="internProfile"
                 app:argType="com.example.ctuintern.data.model.InternProfile"/>
         </action>
         <argument
-            android:name="class"
+            android:name="myClass"
             app:argType="com.example.ctuintern.data.model.Class"/>
     </fragment>
     <fragment

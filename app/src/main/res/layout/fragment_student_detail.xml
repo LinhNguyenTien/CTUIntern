@@ -198,7 +198,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/edit" />
+                    android:src="@drawable/edit_profile_picture" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

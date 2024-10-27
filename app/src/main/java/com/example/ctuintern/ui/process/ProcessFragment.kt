@@ -8,6 +8,7 @@ import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
 class ProcessFragment : MainFragment() {
     override fun initView() {

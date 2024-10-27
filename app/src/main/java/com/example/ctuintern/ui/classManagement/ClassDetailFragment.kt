@@ -11,13 +11,15 @@ import com.example.ctuintern.databinding.FragmentClassDetailBinding
 import com.example.ctuintern.ui.main.MainFragment
 import com.example.ctuintern.data.model.Class
 import com.example.ctuintern.ui.intern.TaskAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ClassDetailFragment : MainFragment() {
     private var _binding: FragmentClassDetailBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ClassManagementViewModel by viewModels()
     private val args: ClassDetailFragmentArgs by navArgs()
-    private val myClass: Class = args.`class`
+    private val myClass: Class = args.myClass
     override fun initView() {
         viewModel.initDetailClassView(myClass.classID)
         viewModel.students.observe(viewLifecycleOwner, Observer {

@@ -1,4 +1,4 @@
-package com.example.ctuintern.ui.classManagement
+package com.example.ctuintern.ui.process
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import com.example.ctuintern.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class CheckListReportFragment : Fragment() {
+class SummaryPhaseFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,6 @@ class CheckListReportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_check_list_report, container, false)
+        return inflater.inflate(R.layout.fragment_summary_phase, container, false)
     }
-
 }

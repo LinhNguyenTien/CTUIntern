@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Teacher
@@ -17,6 +18,7 @@ class ClassManagementFragment : MainFragment() {
     private val binding get() = _binding!!
     private val viewModel: ClassManagementViewModel by viewModels()
     private lateinit var teacher: Teacher
+    private val args: ClassManagementFragmentArgs by navArgs()
     override fun initView() {
         val user = getCurrentUser()
         if(user != null && user is Teacher) {

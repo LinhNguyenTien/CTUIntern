@@ -110,4 +110,6 @@ dependencies {
 
     // Firebase Storage
     implementation("com.google.firebase:firebase-storage")
+
+    // Anychart
 }

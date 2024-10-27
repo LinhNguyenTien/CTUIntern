@@ -45,6 +45,12 @@
     <string name="employStudent">Sinh viên đang tìm việc: %1$d (%2$d%)</string>
     <string name="studentInInterview">Sinh viên chờ phỏng vấn: %1$d (%2$d%)</string>
     <string name="studentInInternship">Sinh viên có việc: %1$d (%2$d%)</string>
+    <string name="process_phase_week">Tiến độ hiện tại: tuần 0%1$d</string>
+    <string name="time_intern">Từ ngày %1$s đến ngày %2$s</string>
+    <string name="total_student">Tổng số: %1$d sinh viên</string>
+    <string name="intern_student">Đang thực tập: %1$d sinh viên (%2$d%)</string>
+    <string name="number_student">%1$d sinh viên</string>
+    <string name="number_alert">%1$d cảnh báo</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

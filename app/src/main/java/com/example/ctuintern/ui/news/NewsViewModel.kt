@@ -25,15 +25,15 @@ class NewsViewModel @Inject constructor(private val newsRepository: NewsReposito
     val searchResults: StateFlow<List<News>> get() = _searchResults
 
     init {
-        // Observe search query changes with debounce
-        viewModelScope.launch {
-            searchQuery
-                .debounce(300) // 300ms debounce
-                .distinctUntilChanged() // Avoid duplicate searches
-                .collect { query ->
-                    _searchResults.value = search(query)
-                }
-        }
+//        // Observe search query changes with debounce
+//        viewModelScope.launch {
+//            searchQuery
+//                .debounce(300) // 300ms debounce
+//                .distinctUntilChanged() // Avoid duplicate searches
+//                .collect { query ->
+//                    _searchResults.value = search(query)
+//                }
+//        }
     }
 
     private suspend fun search(query: String): List<News> {

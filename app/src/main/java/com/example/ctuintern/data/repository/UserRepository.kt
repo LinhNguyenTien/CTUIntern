@@ -47,12 +47,5 @@ class UserRepository @Inject constructor(private val apiService: APIService) {
 
     suspend fun updateProfilePicture(studentID: String, path: ReportRequest) = apiService.updateProfilePicture(studentID, path)
 
-    suspend fun updateProfile(user: User): Response<User> {
-        var requestUser: User? = null
-        requestUser = when(user) {
-            is Student -> {
-                user as Student
-            }
-            
     suspend fun updateProfile(user: User) = apiService.updateProfile(user)
 }
