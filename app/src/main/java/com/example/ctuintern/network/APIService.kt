@@ -9,6 +9,7 @@ import com.example.ctuintern.data.model.InternProfile
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Profile
 import com.example.ctuintern.data.model.ReportRequest
+import com.example.ctuintern.data.model.Review
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Task
 import com.example.ctuintern.data.model.User
@@ -56,7 +57,7 @@ interface APIService {
     @GET("/getTasks/{userID}")
     suspend fun getTasks(@Path("userID") userID: String): List<Task>
 
-    @POST("/uploadReport/{reportID}")
+    @PATCH("/uploadReport/{reportID}")
     suspend fun uploadReport(@Path("reportID") reportID: String, @Body path: ReportRequest)
 
     @GET("/classes/{teacherID}")
@@ -76,4 +77,7 @@ interface APIService {
   
     @POST("/search")
     suspend fun searchNews(@Query("search") search: String): List<News>
+
+    @GET("/reviews")
+    suspend fun getReviewList(@Query("teacherID") teacherID: String, @Query("classID") classID: String? = ""): List<Review>
 }

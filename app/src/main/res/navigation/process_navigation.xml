@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_findJobPhaseFragment_to_internPhaseFragment"
             app:destination="@id/internPhaseFragment" />
-        <action
-            android:id="@+id/action_findJobPhaseFragment_to_summaryPhaseFragment"
-            app:destination="@id/summaryPhaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/internPhaseFragment"
@@ -23,22 +20,7 @@
         android:label="fragment_intern_phase"
         tools:layout="@layout/fragment_intern_phase" >
         <action
-            android:id="@+id/action_internPhaseFragment_to_summaryPhaseFragment"
-            app:destination="@id/summaryPhaseFragment" />
-        <action
             android:id="@+id/action_internPhaseFragment_to_findJobPhaseFragment"
-            app:destination="@id/findJobPhaseFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/summaryPhaseFragment"
-        android:name="com.example.ctuintern.ui.process.SummaryPhaseFragment"
-        android:label="fragment_summary_phase"
-        tools:layout="@layout/fragment_summary_phase" >
-        <action
-            android:id="@+id/action_summaryPhaseFragment_to_internPhaseFragment"
-            app:destination="@id/internPhaseFragment" />
-        <action
-            android:id="@+id/action_summaryPhaseFragment_to_findJobPhaseFragment"
             app:destination="@id/findJobPhaseFragment" />
     </fragment>
 </navigation>
