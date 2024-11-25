@@ -31,9 +31,10 @@ class SearchFragment : MainFragment() {
         if(user != null && user is Student) {
             student = user
             adapter = NewsAdapter(
-                addNewsToFavorite = { news -> viewModel.addNewsToFavorites(news, user.userID) },
-                removeNewsFromFavorite = { news -> viewModel.removeNewsFromFavorites(news, user.userID) },
-                showDetail = { news -> showNewsDetail(news) }
+                addNewsToFavorite = { news -> viewModel.addNewsToFavorites(news.newID.toString(), user.userID) },
+                removeNewsFromFavorite = { news -> viewModel.removeNewsFromFavorites(news.newID.toString(), user.userID) },
+                showDetail = { news -> showNewsDetail(news) },
+                checkFavorite = { news, favoriteView -> viewModel.checkFavorite(news.newID.toString(), user.userID, favoriteView) }
             )
             adapter.setDataset(listOf())
             binding.recycleView.adapter = adapter

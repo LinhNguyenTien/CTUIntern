@@ -4,6 +4,8 @@ import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.ctuintern.data.model.Class
+import com.example.ctuintern.data.model.Profile
 import com.example.ctuintern.data.model.ReportRequest
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.repository.UserRepository
@@ -21,9 +23,33 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
 
     private val _newProfilePath: MutableLiveData<String> = MutableLiveData()
     val newProfilePath: LiveData<String> get() = _newProfilePath
-    private fun updateCV(student: Student) {
+
+    private val _profile: MutableLiveData<Profile> = MutableLiveData()
+    val profile: LiveData<Profile> get() = _profile
+
+    private val _classCTU: MutableLiveData<Class> = MutableLiveData()
+    val classCTU: LiveData<Class> get() = _classCTU
+
+    fun initView(userID: String) {
+        getStudentProfile(userID)
+        getClassCTU(userID)
+    }
+
+    private fun getStudentProfile(userID: String) {
         viewModelScope.launch {
-            userRepository.updateCV(student.profile, student.userID)
+            _profile.value = userRepository.getProfile(userID)
+        }
+    }
+
+    private fun getClassCTU(userID: String) {
+        viewModelScope.launch {
+            _classCTU.value = userRepository.getClass(userID)
+        }
+    }
+
+    private fun updateCV(student: Student, profile: Profile) {
+        viewModelScope.launch {
+            userRepository.updateCV(profile, student.userID)
         }
     }
 
@@ -39,7 +65,7 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
         }
     }
 
-    fun uploadResourceToFBS(student: Student, folder: String, uri: Uri, callback:(String) -> Unit) {
+    fun uploadResourceToFBS(student: Student, profile: Profile, folder: String, uri: Uri, callback:(String) -> Unit) {
         val storage = Firebase.storage
         val cvRef = storage.reference
         val fileRef = cvRef.child("$folder/${student.userID}/${uri.lastPathSegment}")
@@ -52,9 +78,9 @@ class ProfileViewModel @Inject constructor(private val userRepository: UserRepos
             _uploadState.value = UploadState.SUCCESS
             val newPath = it.metadata!!.path
             if(folder == "CV") {
-                student.profile.CVPath = newPath
+                profile.CVPath = newPath
                 callback(newPath)
-                updateCV(student)
+                updateCV(student, profile)
             }
             else {
                 _newProfilePath.value = newPath

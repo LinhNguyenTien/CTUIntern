@@ -48,13 +48,13 @@ class NewsDetailFragment : MainFragment() {
         }).attach()
 
         Glide.with(requireContext())
-            .load(news.employer!!.profilePicture)
+            .load(news.employer?.profilePicture)
             .transform(CircleCrop())
             .override(100, 100)
             .into(binding.companyLogo)
 
         binding.applyBtn.setOnClickListener {
-            viewModel.applyNews(news, getCurrentUser()!!.userID)
+            viewModel.applyNews(news.newID.toString(), getCurrentUser()!!.userID)
             showApplyDialog()
             binding.applyBtn.apply {
                 text = "Đã ứng tuyển"
@@ -65,8 +65,11 @@ class NewsDetailFragment : MainFragment() {
         }
 
         binding.back.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_newsDetailFragment_to_newsFragment)
+            requireActivity().supportFragmentManager.popBackStack()
         }
+
+        viewModel.checkFavorite(getCurrentUser()?.userID.toString(), news.newID.toString(), binding.heart)
+        viewModel.checkAppliedNew(getCurrentUser()?.userID.toString(), news.newID.toString(), binding.applyBtn)
     }
 
     private fun showApplyDialog() {

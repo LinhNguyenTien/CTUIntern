@@ -44,7 +44,8 @@ class FavoriteFragment : MainFragment() {
                                     getCurrentUser()!!.userID
                                 )
                             },
-                            showDetail = { news -> showNewsDetail(news) }
+                            showDetail = { news -> showNewsDetail(news) },
+                            checkFavorite = { news, favoriteView -> viewModel.checkFavorite(student.userID, news.newID.toString(), favoriteView) }
                         )
                         adapter.setDataset(newsList)
                         recycleView.adapter = adapter

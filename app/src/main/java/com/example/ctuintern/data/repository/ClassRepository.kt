@@ -10,9 +10,9 @@ import javax.inject.Inject
 class ClassRepository @Inject constructor(
     private val apiService: APIService
 ){
-    suspend fun getStudentList(classID: String): List<InternProfile> = apiService.getStudentList(classID)
+    suspend fun getStudentList(classID: String) = apiService.getStudentList(classID)
 
-    suspend fun getTaskList(classID: String): List<Task> = apiService.getTaskList(classID)
+    suspend fun getTaskList(classID: String) = apiService.getTaskList(classID)
 
-    suspend fun getReviewList(teacherID: String): List<Review> = apiService.getReviewList(teacherID)
+    suspend fun getReviewList(teacherID: String) = apiService.getReviewList(teacherID)
 }

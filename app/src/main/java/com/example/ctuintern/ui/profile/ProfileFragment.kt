@@ -24,12 +24,14 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavOptions
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.Employer
 import com.example.ctuintern.data.model.News
+import com.example.ctuintern.data.model.Profile
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
@@ -46,6 +48,7 @@ class ProfileFragment : MainFragment() {
     private lateinit var student: Student
     private var folder = ""
     private val viewModel: ProfileViewModel by viewModels()
+    private lateinit var profile: Profile;
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
@@ -106,13 +109,6 @@ class ProfileFragment : MainFragment() {
         })
     }
 
-    private fun logout() {
-        requireActivity().supportFragmentManager.popBackStack(
-            null,  // Pop everything from the back stack
-            FragmentManager.POP_BACK_STACK_INCLUSIVE  // Inclusive to include the topmost fragment
-        )
-    }
-
     private fun setupEmployerUI(employer: Employer) {
         binding.name.text = employer.userName
         binding.field.text = employer.field
@@ -133,9 +129,9 @@ class ProfileFragment : MainFragment() {
     }
 
     private fun setupStudentUI(student: Student) {
+        viewModel.initView(student.userID)
         Log.i("profileFragment", "Student info: $student")
         binding.name.text = student.userName
-        binding.major.text = student.classCTU.major.majorName
         binding.studyTime.text = student.studyTime
         binding.GPA.text = student.GPA.toString()
         binding.phone.text = student.phone
@@ -146,30 +142,38 @@ class ProfileFragment : MainFragment() {
             .override(150,150)
             .error(R.drawable.default_user)
             .into(binding.profilePicture)
-        binding.CVFrame.setOnClickListener {
-            if(student.profile.CVPath.isNullOrEmpty()) {
-                val emptyCVDialog= EmptyCVDialog(
-                    context = requireContext(),
-                    addCV = {
-                        val uploadCVDialog = UploadCVDialog(
-                            context =  requireContext(),
-                            uploadCV = {
-                                openFilePicker("application/pdf")
-                            }
-                        )
-                        showRoundedDialog(uploadCVDialog)
-                    }
-                )
-                showRoundedDialog(emptyCVDialog)
-            }
-            else {
-                checkPermissionsAndDownload()
-            }
-        }
         binding.fieldFrame.visibility = GONE
         binding.addressFrame.visibility = GONE
         binding.websiteFrame.visibility = GONE
         binding.sizeFrame.visibility = GONE
+
+        viewModel.profile.observe(viewLifecycleOwner, Observer { profile ->
+            this.profile = profile
+            binding.CVFrame.setOnClickListener {
+                if(profile.CVPath.isNullOrEmpty()) {
+                    val emptyCVDialog= EmptyCVDialog(
+                        context = requireContext(),
+                        addCV = {
+                            val uploadCVDialog = UploadCVDialog(
+                                context =  requireContext(),
+                                uploadCV = {
+                                    openFilePicker("application/pdf")
+                                }
+                            )
+                            showRoundedDialog(uploadCVDialog)
+                        }
+                    )
+                    showRoundedDialog(emptyCVDialog)
+                }
+                else {
+                    checkPermissionsAndDownload()
+                }
+            }
+        })
+
+        viewModel.classCTU.observe(viewLifecycleOwner, Observer { classCTU ->
+            binding.major.text = classCTU.major.majorName
+        })
     }
 
     private fun showRoundedDialog(dialog: Dialog) {
@@ -182,7 +186,7 @@ class ProfileFragment : MainFragment() {
     }
 
     private fun openFilePicker(fileTypes: String = "*/*") {
-        folder = if(fileTypes == "application/pdf") "CV"
+        folder = if(fileTypes == "image/pdf") "CV"
         else "ProfilePicture"
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
             type = fileTypes
@@ -195,9 +199,8 @@ class ProfileFragment : MainFragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_FILE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             data?.data?.let { uri ->
-                viewModel.uploadResourceToFBS(student, folder, uri) {
-                    student.profile.CVPath = it
-                    Log.i("Profile fragment", "CV Path: ${student.profile.CVPath}")
+                viewModel.uploadResourceToFBS(student, profile, folder, uri) {
+                    profile.CVPath = it
                 }
             }
         }
@@ -243,16 +246,17 @@ class ProfileFragment : MainFragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
         binding.updateProfilePicture.setOnClickListener {
-            openFilePicker("application/png, application/jpeg, application/jpg")
+            openFilePicker("image/png")
         }
         binding.logout.setOnClickListener {
+            setCurrentUser(null)
             logout()
         }
     }
 
     private fun downloadCV() {
         val downloadManager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val request = DownloadManager.Request(Uri.parse(student.profile.CVPath))
+        val request = DownloadManager.Request(Uri.parse(profile.CVPath))
 
         request.setTitle("Downloading file")
         request.setDescription("Downloading file")

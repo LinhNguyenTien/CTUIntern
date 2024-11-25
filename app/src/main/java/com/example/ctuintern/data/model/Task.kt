@@ -7,5 +7,5 @@ data class Task(
     val title: String? = null,
     val content: String? = null,
     val expiredDay: String? = null,
-    val detail: TaskDetail? = null
+    val teacher: Teacher? = null
 ): Serializable

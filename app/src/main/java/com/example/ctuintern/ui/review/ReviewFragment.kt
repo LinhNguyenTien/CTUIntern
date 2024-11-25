@@ -27,8 +27,12 @@ class ReviewFragment : MainFragment() {
             teacher = user
             binding.profile.text = teacher.userName
             viewModel.initView(teacher.userID)
-            viewModel.reviews.observe(viewLifecycleOwner, Observer {
-                // set up for review list
+            viewModel.reviews.observe(viewLifecycleOwner, Observer { reviews ->
+                val reviewAdapter = ReviewAdapter() { review ->
+                    navigateToFragment(binding.root, ReviewFragmentDirections.actionReviewFragmentToReviewDetailFragment(review))
+                }
+                reviewAdapter.setDataset(reviews)
+                binding.recyclerView.adapter = reviewAdapter
             })
         }
     }

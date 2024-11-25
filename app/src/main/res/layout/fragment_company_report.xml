@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.classManagement.CompanyReportFragment">
 
     <RelativeLayout
@@ -33,31 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!--            Student section-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thông tin cán bộ hướng dẫn"
-                android:textSize="20sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mentorName"
-                android:text="Họ và tên:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/mentorPhone"
-                android:text="Điện thoại:"
-                android:textSize="16sp"
-                android:fontFamily="@font/baloo_2"
-                android:textColor="@color/black"/>
             <!--            Company section-->
             <TextView
                 android:layout_width="wrap_content"
@@ -66,8 +42,7 @@
                 android:textSize="20sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -485,6 +460,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/check1"
                     android:checked="false"
+                    android:clickable="false"
                     android:layout_alignParentStart="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -504,6 +480,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/check2"
+                    android:clickable="false"
                     android:checked="false"
                     android:layout_alignParentStart="true"/>
 
@@ -526,6 +503,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/check3"
                     android:checked="false"
+                    android:clickable="false"
                     android:layout_alignParentStart="true"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -545,6 +523,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/check4"
+                    android:clickable="false"
                     android:checked="false"
                     android:layout_alignParentStart="true"/>
                 <TextView
@@ -565,6 +544,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/check5"
+                    android:clickable="false"
                     android:checked="false"
                     android:layout_alignParentStart="true"/>
                 <TextView
@@ -602,7 +582,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mentorName2"
+                android:id="@+id/mentorName"
                 android:text="Cán bộ hướng dẫn:"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
@@ -630,7 +610,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mentorPhone2"
+                android:id="@+id/mentorPhone"
                 android:text="Điện thoại:"
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"

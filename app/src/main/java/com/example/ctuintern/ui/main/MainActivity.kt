@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -40,6 +41,15 @@ class MainActivity : AppCompatActivity() {
     fun checkPermission(permission: String): Boolean {
         return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
     }
+
+    fun logout() {
+        val navOptions = NavOptions.Builder()
+            .setPopUpTo(R.id.loginFragment, inclusive = true) // Replace with your first fragment's ID
+            .build()
+
+        navController.navigate(R.id.loginFragment, null, navOptions)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

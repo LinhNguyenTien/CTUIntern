@@ -28,10 +28,6 @@ class NewsFragment : MainFragment() {
     private val binding get() = _binding!!
     private lateinit var profile: TextView
     private lateinit var search: SearchView
-    private lateinit var company: RelativeLayout
-    private lateinit var job: RelativeLayout
-    private lateinit var location: RelativeLayout
-    private lateinit var tech: RelativeLayout
     private lateinit var interview: RelativeLayout
     private lateinit var intern: RelativeLayout
     private lateinit var favorite: RelativeLayout
@@ -44,10 +40,6 @@ class NewsFragment : MainFragment() {
     override fun initView() {
         profile = binding.profile
         search = binding.search
-        company = binding.company
-        job = binding.job
-        location = binding.location
-        tech = binding.tech
         recycleView = binding.recyclerView
         interview = binding.videoCall
         intern = binding.intern
@@ -65,9 +57,10 @@ class NewsFragment : MainFragment() {
                     }
                     else {
                         var adapter = NewsAdapter(
-                            addNewsToFavorite = { news -> viewModel.addNewsToFavorites(news, user.userID) },
-                            removeNewsFromFavorite = { news -> viewModel.removeNewsFromFavorites(news, user.userID) },
-                            showDetail = { news -> showNewsDetail(news) }
+                            addNewsToFavorite = { news -> viewModel.addNewsToFavorites(news.newID.toString(), user.userID) },
+                            removeNewsFromFavorite = { news -> viewModel.removeNewsFromFavorites(news.newID.toString(), user.userID) },
+                            showDetail = { news -> showNewsDetail(news) },
+                            checkFavorite = { news, favoriteView -> viewModel.checkFavorite(student.userID, news.newID.toString(), favoriteView) }
                         )
                         adapter.setDataset(newsList)
                         recycleView.adapter = adapter
@@ -95,18 +88,6 @@ class NewsFragment : MainFragment() {
         }
         search.setOnClickListener {
             // navigate to search
-            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
-        }
-        company.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
-        }
-        job.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
-        }
-        location.setOnClickListener {
-            navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
-        }
-        tech.setOnClickListener {
             navigateToFragment(binding.root, R.id.action_newsFragment_to_searchFragment)
         }
         interview.setOnClickListener {

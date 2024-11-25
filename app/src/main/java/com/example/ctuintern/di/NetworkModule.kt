@@ -15,14 +15,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
 
     @Provides
     fun provideBaseUrl(): String {
-        return "https://lalaw.free.beeceptor.com"
+        return "http://192.168.100.15:3000"
     }
     @Singleton
     @Provides

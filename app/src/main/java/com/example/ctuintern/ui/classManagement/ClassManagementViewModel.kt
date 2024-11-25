@@ -19,12 +19,14 @@ class ClassManagementViewModel @Inject constructor(
     private val _classes: MutableLiveData<List<Class>> = MutableLiveData(listOf())
     val classes: MutableLiveData<List<Class>> get() = _classes
 
-    private val _students: MutableLiveData<List<InternProfile>> = MutableLiveData(listOf())
-    val students: MutableLiveData<List<InternProfile>> get() = _students
+    private val _students: MutableLiveData<List<Student>> = MutableLiveData(listOf())
+    val students: MutableLiveData<List<Student>> get() = _students
 
     private val _tasks: MutableLiveData<List<Task>> = MutableLiveData(listOf())
     val tasks: MutableLiveData<List<Task>> get() = _tasks
 
+    private val _internProfile: MutableLiveData<InternProfile> = MutableLiveData()
+    val internProfile: MutableLiveData<InternProfile> get() = _internProfile
     fun initView(teacherID: String) {
         getClasses(teacherID)
     }
@@ -32,6 +34,12 @@ class ClassManagementViewModel @Inject constructor(
     fun initDetailClassView(classID: String) {
         getStudentList(classID)
         getTaskList(classID)
+    }
+
+    fun getInternProfile(userID: String) {
+        viewModelScope.launch {
+            _internProfile.value = userRepository.getInternProfile(userID)
+        }
     }
 
     fun getClasses(teacherID: String) {

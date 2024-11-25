@@ -17,7 +17,8 @@ import com.example.ctuintern.databinding.JobItemBinding
 class NewsAdapter(
     private val addNewsToFavorite: (News) -> Unit,
     private val removeNewsFromFavorite: (News) -> Unit,
-    private val showDetail: (News) -> Unit
+    private val showDetail: (News) -> Unit,
+    private val checkFavorite: (News, ImageView) -> Unit
 ): RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     private var newsList: List<News> = listOf()
@@ -38,19 +39,20 @@ class NewsAdapter(
             jobName = binding.firstSubTitle
         }
 
-        fun bind(news: News) {
+        fun bind(news: News, checkFavorite: (News, ImageView) -> Unit) {
             initView()
-            val context: Context = binding.root.context
             // Fetch data
             Glide.with(itemView.context)
-                .load(news.employer!!.profilePicture)
+                .load(news.employer?.profilePicture)
                 .override(150, 150)
+                .error(R.drawable.default_user)
                 .into(companyPhoto)
 
-            companyName.text = news.employer!!.userName
+            companyName.text = news.employer?.userName
             jobName.text = news.title
-            quantity.text = "${news.quantity.toString()} người"
+            quantity.text = "Số lượng: ${news.quantity.toString()} người"
             expireDay.text = "Hạn nộp: ${news.expireDay.toString()}"
+            checkFavorite(news, favorite)
             favorite.setOnClickListener {
                 addNewsToFavorite(news)
             }
@@ -82,7 +84,7 @@ class NewsAdapter(
         val news = newsList[position]
         if(news != null) {
             Log.i("news info", "news: ${news.toString()}")
-            holder.bind(news)
+            holder.bind(news, checkFavorite)
             holder.itemView.setOnClickListener {
                 showDetail(news)
             }

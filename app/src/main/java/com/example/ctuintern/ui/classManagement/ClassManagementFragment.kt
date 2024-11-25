@@ -1,8 +1,10 @@
 package com.example.ctuintern.ui.classManagement
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
@@ -18,7 +20,6 @@ class ClassManagementFragment : MainFragment() {
     private val binding get() = _binding!!
     private val viewModel: ClassManagementViewModel by viewModels()
     private lateinit var teacher: Teacher
-    private val args: ClassManagementFragmentArgs by navArgs()
     override fun initView() {
         val user = getCurrentUser()
         if(user != null && user is Teacher) {
@@ -27,8 +28,18 @@ class ClassManagementFragment : MainFragment() {
             viewModel.initView(teacher.userID)
             viewModel.classes.observe(viewLifecycleOwner, Observer {
                 val adapter = ClassAdapter(
-                    showDetail = {
-                        navigateToFragment(binding.root, ClassManagementFragmentDirections.actionClassManagementFragmentToClassDetailFragment(it))
+                    showDetail = { myClass ->
+                        if(myClass != null) {
+                            Log.i("ClassManagementFragment", "initView: myClass is not null $myClass")
+                        }
+                        else {
+                            Log.i("ClassManagementFragment", "initView: myClass is null")
+                        }
+                        navigateToFragment(
+                            binding.root,
+                            R.id.action_classManagementFragment_to_classDetailFragment,
+                            bundleOf("myClass" to myClass)
+                        )
                     }
                 )
                 adapter.setDataSet(it)

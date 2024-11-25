@@ -1,5 +1,7 @@
 package com.example.ctuintern.data.model
 
+import java.io.Serializable
+
 class Teacher(
     userID: String,
     userName: String,
@@ -10,7 +12,7 @@ class Teacher(
     profilePicture: String,
     role: String,
     var teacherID: String,
-): User(userID, userName, account, password, phone, email, profilePicture, role) {
+): Serializable, User(userID, userName, account, password, phone, email, profilePicture, role) {
     override fun toString(): String {
         return "Teacher(teacherID='$teacherID')"
     }

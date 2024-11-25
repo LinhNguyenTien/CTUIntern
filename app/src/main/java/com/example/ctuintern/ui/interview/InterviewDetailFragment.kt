@@ -1,26 +1,24 @@
 package com.example.ctuintern.ui.interview
 
 import android.app.Dialog
-import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.News
 import com.example.ctuintern.data.model.Student
-import com.example.ctuintern.databinding.FragmentInterviewBinding
 import com.example.ctuintern.databinding.FragmentInterviewDetailBinding
 import com.example.ctuintern.ui.main.MainFragment
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallConfig
+import com.zegocloud.uikit.prebuilt.call.ZegoUIKitPrebuiltCallFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -45,7 +43,7 @@ class InterviewDetailFragment : MainFragment() {
         Glide
             .with(requireContext())
             .load(appliedNews.news?.employer?.profilePicture)
-            .error(R.drawable.default_company)
+            .error(com.example.ctuintern.R.drawable.default_company)
             .into(binding.companyLogo)
 
         if(appliedNews.room != null) {
@@ -101,36 +99,36 @@ class InterviewDetailFragment : MainFragment() {
 
     private fun startCall() {
         // This zegocloud account will be expired on 07/09/2024
-        val appID: Long = 307241710L
-        val appSign = "24fb1838cd34652551b5a387e6255965c29ee9f8a82898a12b8e49641b42873c"
+        val appID: Long = 110978618L
+        val appSign = "b09726387d4f7b0fdc4e8e99f1b5c6cde8d78615bf0ea72096b29a4b3eff5889"
 
-        val callID = appliedNews.room?.roomID
-        val userID = student?.userID
-        val userName = student?.userName
+        val callID = appliedNews.room?.roomID.toString()
+        val userID = student?.userID.toString()
+        val userName = student?.userName.toString()
 
         // You can also use GroupVideo/GroupVoice/OneOnOneVoice to make more types of calls.
-//        val config = ZegoUIKitPrebuiltCallConfig()
-//        ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
-//        config.apply {
-//            // Set up event listener click on close video call, back to current fragment
-//            this.leaveCallListener = ZegoUIKitPrebuiltCallFragment.LeaveCallListener {
-//                supportFragmentManager.popBackStack()
-//            }
-//            // Mute microphone and turn off camera when joining call
-//            this.turnOnCameraWhenJoining = false
-//            this.turnOnMicrophoneWhenJoining = false
-//        }
-//
-//        // Set up fragment to show call
-//        val fragment = ZegoUIKitPrebuiltCallFragment.newInstance(
-//            appID, appSign, userID, userName, callID, config
-//        )
-//
-//        // Show fragment
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.fragmentContainerInCall, fragment)
-//            .addToBackStack(null)
-//            .commit()
+        val config = ZegoUIKitPrebuiltCallConfig()
+        ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+        config.apply {
+            // Set up event listener click on close video call, back to current fragment
+            this.leaveCallListener = ZegoUIKitPrebuiltCallFragment.LeaveCallListener {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+            // Mute microphone and turn off camera when joining call
+            this.turnOnCameraWhenJoining = false
+            this.turnOnMicrophoneWhenJoining = false
+        }
+
+        // Set up fragment to show call
+        val fragment = ZegoUIKitPrebuiltCallFragment.newInstance(
+            appID, appSign, userID, userName, callID, config
+        )
+
+        // Show fragment
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun formatDuration(duration: Int): String {

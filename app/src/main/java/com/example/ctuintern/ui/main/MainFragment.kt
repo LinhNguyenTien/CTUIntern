@@ -46,5 +46,7 @@ abstract class MainFragment: Fragment() {
         return (requireActivity() as MainActivity).checkPermission(permission)
     }
 
+    fun logout() = (requireActivity() as MainActivity).logout()
+
     abstract fun showNewsDetail(news: News)
 }

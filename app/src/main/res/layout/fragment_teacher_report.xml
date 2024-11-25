@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.classManagement.CompanyReportFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:id="@+id/header">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +29,9 @@
         android:layout_height="match_parent"
         android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="20dp"
+        android:id="@+id/scrollView"
+        android:layout_above="@+id/saveButton"
+        android:layout_below="@+id/header"
         android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +49,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/mentorName"
+                android:id="@+id/teacherName"
                 android:text="Họ và tên:"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
@@ -248,6 +252,7 @@
                         android:padding="3dp"
                         android:background="@drawable/background_report_cell"/>
                     <TextView
+                        android:id="@+id/III1score"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
@@ -291,8 +296,8 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:id="@+id/IVscore"
                         android:layout_weight="2"
-                        android:id="@+id/III1score"
                         android:textStyle="bold"
                         android:gravity="center"
                         android:fontFamily="@font/baloo_2"
@@ -363,6 +368,17 @@
                         android:background="@drawable/background_report_cell"/>
                 </TableRow>
             </TableLayout>
+
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:text="Lưu" />
+</RelativeLayout>

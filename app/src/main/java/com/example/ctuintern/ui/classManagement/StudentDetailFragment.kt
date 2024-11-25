@@ -4,6 +4,7 @@ import android.app.DownloadManager
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.LayoutInflater
@@ -11,6 +12,9 @@ import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.ctuintern.R
 import com.example.ctuintern.data.model.InternProfile
@@ -19,53 +23,71 @@ import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.databinding.FragmentStudentDetailBinding
 import com.example.ctuintern.ui.main.MainFragment
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.core.Observer
 import java.util.UUID
 @AndroidEntryPoint
 class StudentDetailFragment : MainFragment() {
     private var _binding: FragmentStudentDetailBinding? = null
     private val binding get() = _binding!!
-    private val args: StudentDetailFragmentArgs by navArgs()
-    private val internProfile: InternProfile = args.internProfile
-
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private lateinit var student: Student
+    private lateinit var internProfile: InternProfile
+    private val viewModel: ClassManagementViewModel by viewModels()
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun initView() {
-        binding.apply {
-            studentName.text = "Họ và Tên: ${internProfile.student.userName}"
-            studentCode.text = "MSSV: ${internProfile.student.studentID}"
-            studentPhone.text = "Số điện thoại: ${internProfile.student.phone}"
+        student = requireArguments().getSerializable("student", Student::class.java)!!
+        if(student != null) {
+            viewModel.getInternProfile(student!!.userID)
+            viewModel.internProfile.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+                internProfile -> this.internProfile = internProfile
+                binding.apply {
+                    studentName.text = "Họ và Tên: ${internProfile.student.userName}"
+                    studentCode.text = "MSSV: ${internProfile.student.studentID}"
+                    studentPhone.text = "Số điện thoại: ${internProfile.student.phone}"
 
-            companyName.text = "Đơn vị: ${internProfile.news?.employer?.userName}"
-            companyAddress.text = "Đơn vị: ${internProfile.news?.employer?.address}"
-            companyPhone.text = "Số điện thoại: ${internProfile.news?.employer?.phone}"
+                    if(internProfile.news != null) {
+                        companyName.text = "Đơn vị: ${internProfile.news?.employer?.userName}"
+                        companyAddress.text = "Địa chỉ: ${internProfile.news?.employer?.address}"
+                        companyPhone.text = "Số điện thoại: ${internProfile.news?.employer?.phone}"
+                    }
+                    else {
+                        companyName.text = "Không có"
+                        companyAddress.text = "Không có"
+                        companyPhone.text = "Không có"
+                    }
 
-            companyScore.text = if(internProfile.internReport.companyReviewPath != null)
-            {
-                internProfile.internReport.companyScore.toString()
-            }
-            else {
-                "N/A"
-            }
-            teacherScore.text = if(internProfile.internReport.teacherReportPath != null)
-            {
-                internProfile.internReport.teacherReviewScore.toString()
-            }
-            else {
-                "N/A"
-            }
+                    companyScore.text = if(internProfile.internReport.companyReviewPath != null)
+                    {
+                        internProfile.internReport.companyScore.toString()
+                    }
+                    else {
+                        "N/A"
+                    }
+                    teacherScore.text = if(internProfile.internReport.teacherReportPath != null)
+                    {
+                        internProfile.internReport.teacherReviewScore.toString()
+                    }
+                    else {
+                        "N/A"
+                    }
 
-            if(checkFormEnough(internProfile)) {
-                val companyScore = internProfile.internReport.companyScore?:0.0
-                val teacherScore = internProfile.internReport.teacherReviewScore?:0.0
-                val total = companyScore + teacherScore
-                totalScore.text = total.toString()
-                tenPointScale.text = (total/10.0).toString()
-                fourPointScale.text = calculateFourPointScale(total/10.0).toString()
-                charPointScale.text = calculateCharPointScale(total)
-                binding.broadScore.visibility = VISIBLE
-            }
-            else {
-                binding.notReadyForm.visibility = VISIBLE
-            }
+                    if(checkFormEnough(internProfile)) {
+                        val companyScore = internProfile.internReport.companyScore?:0.0
+                        val teacherScore = internProfile.internReport.teacherReviewScore?:0.0
+                        val total = companyScore + teacherScore
+                        totalScore.text = total.toString()
+                        tenPointScale.text = (total/10.0).toString()
+                        fourPointScale.text = calculateFourPointScale(total/10.0).toString()
+                        charPointScale.text = calculateCharPointScale(total)
+                        binding.broadScore.visibility = VISIBLE
+                    }
+                    else {
+                        binding.notReadyForm.visibility = VISIBLE
+                    }
 
+                }
+                initClick()
+            })
         }
     }
 
@@ -106,82 +128,105 @@ class StudentDetailFragment : MainFragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun initClick() {
-        binding.apply {
-            // Phieu giao viec
-            if(internProfile.internReport.taskListReportPath != null) {
-                checkTaskList.setImageResource(R.drawable.open)
-                checkTaskList.setOnClickListener {
-                    //navigateToFragment()
-                }
-            }
-            else {
-                checkTaskList.setImageResource(R.drawable.not_found)
-                checkTaskList.setOnClickListener {
-                    showRoundedDialog(
-                        NotAvailableDialog(
-                            requireContext(),
-                            "Phiếu giao việc chưa được cung cấp bởi nhà tuyển dụng"
+        if(internProfile != null) {
+            binding.apply {
+                // Phieu giao viec
+                if(internProfile.internReport.taskListReportPath != null) {
+                    checkTaskList.setImageResource(R.drawable.open)
+                    checkTaskList.setOnClickListener {
+                        navigateToFragment(
+                            root,
+                            R.id.action_studentDetailFragment_to_taskListReportFragment,
+                            bundleOf("internProfile" to internProfile)
                         )
-                    )
-                }
-            }
-            // Phieu theo doi
-            if(internProfile.internReport.checkListReportPath != null) {
-                checkCheckList.setImageResource(R.drawable.open)
-                checkCheckList.setOnClickListener {
-                    //navigateToFragment()
-                }
-            }
-            else {
-                checkCheckList.setImageResource(R.drawable.not_found)
-                checkCheckList.setOnClickListener {
-                    showRoundedDialog(
-                        NotAvailableDialog(
-                            requireContext(),
-                            "Phiếu theo dõi chưa được cung cấp bởi nhà tuyển dụng"
-                        )
-                    )
-                }
-            }
-            // Phieu danh gia cong ty
-            if(internProfile.internReport.reviewReportPath != null) {
-                checkCompanyReview.setImageResource(R.drawable.open)
-                checkCompanyReview.setOnClickListener {
-                    //navigateToFragment()
-                }
-            }
-            else {
-                checkCompanyReview.setImageResource(R.drawable.not_found)
-                checkCompanyReview.setOnClickListener {
-                    showRoundedDialog(
-                        NotAvailableDialog(
-                            requireContext(),
-                            "Phiếu đánh giá chưa được cung cấp bởi nhà tuyển dụng"
-                        )
-                    )
-                }
-            }
-            // Phieu danh gia giao vien
-            checkTeacherReview.setOnClickListener {
-                // navigate to teacher review
-            }
-
-            checkStudentReport.setOnClickListener {
-                if(internProfile.internReport.studentReportPath != null &&
-                    internProfile.internReport.studentReportPath!!.isNotEmpty()) {
-                    downloadStudentReport(
-                        internProfile.internReport.studentReportPath?:"",
-                        "Bao_cao_sinh_vien_${UUID.randomUUID()}.pdf"
-                    )
+                    }
                 }
                 else {
-                    showRoundedDialog(
-                        NotAvailableDialog(
-                            requireContext(),
-                            "Báo cáo chưa được cung cấp bởi sinh viên"
+                    checkTaskList.setImageResource(R.drawable.not_found)
+                    checkTaskList.setOnClickListener {
+                        showRoundedDialog(
+                            NotAvailableDialog(
+                                requireContext(),
+                                "Phiếu giao việc chưa được cung cấp bởi nhà tuyển dụng"
+                            )
                         )
+                    }
+                }
+                // Phieu theo doi
+                if(internProfile.internReport.checkListReportPath != null) {
+                    checkCheckList.setImageResource(R.drawable.open)
+                    checkCheckList.setOnClickListener {
+                        navigateToFragment(
+                            root,
+                            R.id.action_studentDetailFragment_to_checkListReportFragment,
+                            bundleOf("internProfile" to internProfile)
+                        )
+                    }
+                }
+                else {
+                    checkCheckList.setImageResource(R.drawable.not_found)
+                    checkCheckList.setOnClickListener {
+                        showRoundedDialog(
+                            NotAvailableDialog(
+                                requireContext(),
+                                "Phiếu theo dõi chưa được cung cấp bởi nhà tuyển dụng"
+                            )
+                        )
+                    }
+                }
+                // Phieu danh gia cong ty
+                if(internProfile.internReport.reviewReportPath != null) {
+                    checkCompanyReview.setImageResource(R.drawable.open)
+                    checkCompanyReview.setOnClickListener {
+                        navigateToFragment(
+                            root,
+                            R.id.action_studentDetailFragment_to_companyReportFragment,
+                            bundleOf("internProfile" to internProfile)
+                        )
+                    }
+                }
+                else {
+                    checkCompanyReview.setImageResource(R.drawable.not_found)
+                    checkCompanyReview.setOnClickListener {
+                        showRoundedDialog(
+                            NotAvailableDialog(
+                                requireContext(),
+                                "Phiếu đánh giá chưa được cung cấp bởi nhà tuyển dụng"
+                            )
+                        )
+                    }
+                }
+                // Phieu danh gia giao vien
+                checkTeacherReview.setOnClickListener {
+                    navigateToFragment(
+                        root,
+                        R.id.action_studentDetailFragment_to_teacherReportFragment,
+                        bundleOf("internProfile" to internProfile)
                     )
+                }
+
+                checkStudentReport.setOnClickListener {
+                    if(internProfile.internReport.studentReportPath != null &&
+                        internProfile.internReport.studentReportPath!!.isNotEmpty()) {
+                        downloadStudentReport(
+                            internProfile.internReport.studentReportPath?:"",
+                            "Bao_cao_sinh_vien_${UUID.randomUUID()}.pdf"
+                        )
+                    }
+                    else {
+                        showRoundedDialog(
+                            NotAvailableDialog(
+                                requireContext(),
+                                "Báo cáo chưa được cung cấp bởi sinh viên"
+                            )
+                        )
+                    }
+                }
+
+                backArrow.setOnClickListener {
+                    requireActivity().supportFragmentManager.popBackStack()
                 }
             }
         }
@@ -212,6 +257,7 @@ class StudentDetailFragment : MainFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -219,7 +265,6 @@ class StudentDetailFragment : MainFragment() {
         // Inflate the layout for this fragment
         _binding = FragmentStudentDetailBinding.inflate(inflater, container, false)
         initView()
-        initClick()
         return binding.root
     }
 

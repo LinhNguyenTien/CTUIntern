@@ -138,6 +138,9 @@
         <action
             android:id="@+id/action_applyFragment_to_interviewFragment"
             app:destination="@id/interviewFragment" />
+        <action
+            android:id="@+id/action_applyFragment_to_newsDetailFragment"
+            app:destination="@id/newsDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/internFragment"
@@ -263,10 +266,9 @@
             app:destination="@id/processFragment" />
         <action
             android:id="@+id/action_classManagementFragment_to_classDetailFragment"
-            app:destination="@id/classDetailFragment" />
-        <argument
-            android:name="myClass"
-            app:argType="com.example.ctuintern.data.model.Class"/>
+            app:destination="@id/classDetailFragment">
+        </action>
+
     </fragment>
     <fragment
         android:id="@+id/processFragment"
@@ -288,6 +290,9 @@
         android:name="com.example.ctuintern.ui.review.ReviewFragment"
         android:label="fragment_review"
         tools:layout="@layout/fragment_review" >
+        <argument
+            android:name="review"
+            app:argType="com.example.ctuintern.data.model.Review"/>
         <action
             android:id="@+id/action_reviewFragment_to_statisticFragment"
             app:destination="@id/statisticFragment" />
@@ -297,6 +302,9 @@
         <action
             android:id="@+id/action_reviewFragment_to_processFragment"
             app:destination="@id/processFragment" />
+        <action
+            android:id="@+id/action_reviewFragment_to_reviewDetailFragment"
+            app:destination="@id/reviewDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/statisticFragment"
@@ -318,9 +326,18 @@
         android:name="com.example.ctuintern.ui.classManagement.StudentDetailFragment"
         android:label="fragment_student_detail"
         tools:layout="@layout/fragment_student_detail">
-        <argument
-            android:name="internProfile"
-            app:argType="com.example.ctuintern.data.model.InternProfile"/>
+        <action
+            android:id="@+id/action_studentDetailFragment_to_taskListReportFragment"
+            app:destination="@id/taskListReportFragment" />
+        <action
+            android:id="@+id/action_studentDetailFragment_to_companyReportFragment"
+            app:destination="@id/companyReportFragment" />
+        <action
+            android:id="@+id/action_studentDetailFragment_to_checkListReportFragment"
+            app:destination="@id/checkListReportFragment" />
+        <action
+            android:id="@+id/action_studentDetailFragment_to_teacherReportFragment"
+            app:destination="@id/teacherReportFragment" />
     </fragment>
     <fragment
         android:id="@+id/classDetailFragment"
@@ -330,13 +347,7 @@
         <action
             android:id="@+id/action_classDetailFragment_to_studentDetailFragment"
             app:destination="@id/studentDetailFragment">
-            <argument
-                android:name="internProfile"
-                app:argType="com.example.ctuintern.data.model.InternProfile"/>
         </action>
-        <argument
-            android:name="myClass"
-            app:argType="com.example.ctuintern.data.model.Class"/>
     </fragment>
     <fragment
         android:id="@+id/taskDetailFragment"
@@ -347,4 +358,33 @@
             android:name="task"
             app:argType="com.example.ctuintern.data.model.Task" />
     </fragment>
+    <fragment
+        android:id="@+id/taskListReportFragment"
+        android:name="com.example.ctuintern.ui.classManagement.TaskListReportFragment"
+        android:label="fragment_task_list_report"
+        tools:layout="@layout/fragment_task_list_report" />
+    <fragment
+        android:id="@+id/reviewDetailFragment"
+        android:name="com.example.ctuintern.ui.review.ReviewDetailFragment"
+        android:label="fragment_review_detail"
+        tools:layout="@layout/fragment_review_detail" >
+        <argument
+            android:name="review"
+            app:argType="com.example.ctuintern.data.model.Review"/>
+    </fragment>
+    <fragment
+        android:id="@+id/companyReportFragment"
+        android:name="com.example.ctuintern.ui.classManagement.CompanyReportFragment"
+        android:label="fragment_company_report"
+        tools:layout="@layout/fragment_company_report" />
+    <fragment
+        android:id="@+id/checkListReportFragment"
+        android:name="com.example.ctuintern.ui.classManagement.CheckListReportFragment"
+        android:label="fragment_check_list_report"
+        tools:layout="@layout/fragment_check_list_report" />
+    <fragment
+        android:id="@+id/teacherReportFragment"
+        android:name="com.example.ctuintern.ui.classManagement.TeacherReportFragment"
+        android:label="TeacherReportFragment"
+        tools:layout="@layout/fragment_teacher_report"/>
 </navigation>

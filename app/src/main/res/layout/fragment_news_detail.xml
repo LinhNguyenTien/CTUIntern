@@ -9,19 +9,13 @@
     android:background="@color/white">
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/header"
-        android:background="@color/blue">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:id="@+id/companyLogo"
-            android:src="@drawable/loading"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"/>
+        android:orientation="vertical"
+        android:background="@color/blue"
+        android:gravity="center_horizontal">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -44,6 +38,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/heart"
                 android:background="@android:color/transparent"
                 android:src="@drawable/heart"
                 android:layout_alignParentEnd="true"
@@ -51,6 +46,14 @@
                 android:layout_marginRight="10dp"
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:id="@+id/companyLogo"
+            android:src="@drawable/loading"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp" />
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,7 +61,7 @@
             android:id="@+id/tabLayout"
             app:tabTextColor="@color/black"
             android:background="@color/white"/>
-    </RelativeLayout>
+    </LinearLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"

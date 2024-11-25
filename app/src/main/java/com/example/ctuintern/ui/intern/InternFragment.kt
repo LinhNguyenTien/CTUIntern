@@ -42,6 +42,12 @@ class InternFragment : MainFragment() {
                 Log.i("intern", "get intern profile success")
                 setUpInformation(internProfile)
             })
+            viewModel.getTeacher(student.userID)
+            viewModel.teacher.observe(viewLifecycleOwner, Observer {
+                binding.teacherName.text = it.userName
+                binding.teacherPhone.text = it.phone
+                binding.teacherEmail.text = it.email
+            })
             viewModel.uploadState.observe(viewLifecycleOwner, Observer {
                 if(it == UploadState.SUCCESS) {
                     binding.check.setImageResource(R.drawable.check)
@@ -79,12 +85,14 @@ class InternFragment : MainFragment() {
             companyPhone.text = ip.news?.employer?.phone
             companyAddress.text = ip.news?.location
 
-            teacherName.text = ip.student.classCTU.teacher.userName
-            teacherPhone.text = ip.student.classCTU.teacher.phone
-            teacherEmail.text = ip.student.classCTU.teacher.email
-
             viewModel.getTasks(student.userID) {
                 val adapter = TaskAdapter() { task ->
+                    if(task != null) {
+                        Log.i("intern", "task is not null")
+                    }
+                    else {
+                        Log.i("intern", "task is null")
+                    }
                     navigateToFragment(binding.root, InternFragmentDirections.actionInternFragmentToTaskDetailFragment(task))
                 }
                 adapter.setDataSet(it)

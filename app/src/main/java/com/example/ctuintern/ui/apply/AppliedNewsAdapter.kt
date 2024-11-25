@@ -29,16 +29,15 @@ class AppliedNewsAdapter(
             binding.secondSubTitle.text = "Số lượng: ${news.news?.quantity} người"
             binding.thirdSubTitle.text = "Hạn nộp: ${news.news?.expireDay}"
             binding.favorite.visibility = View.GONE
+            binding.root.setOnClickListener {
+                showDetail?.invoke(news)
+            }
             Glide
                 .with(binding.root.context)
                 .load(news.news?.employer?.profilePicture)
                 .override(100,100)
                 .error(R.drawable.default_company)
                 .into(binding.companyLogo)
-
-            binding.root.setOnClickListener {
-                showDetail?.invoke(news)
-            }
         }
     }
 

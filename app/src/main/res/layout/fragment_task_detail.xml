@@ -1,14 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.intern.TaskDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backArrow"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/back"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:fontFamily="@font/baloo_2"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/blue"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@id/header"
+        android:scrollbars="none">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/contentLabel"
+                android:text="Nội dung bài tập"
+                android:textSize="20sp"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/content"
+                android:layout_below="@id/contentLabel"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/baloo_2"
+                android:textColor="@color/black"/>
 
-</FrameLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/timeFrame"
+                android:layout_below="@id/content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hạn nộp:"
+                    android:id="@+id/timeLabel"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/time"
+                    android:layout_toRightOf="@id/timeLabel"
+                    android:textAlignment="textEnd"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20sp"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/stateFrame"
+                android:layout_below="@id/timeFrame"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trạng thái:"
+                    android:id="@+id/stateLabel"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/state"
+                    android:layout_toRightOf="@id/stateLabel"
+                    android:textAlignment="textEnd"
+                    android:text="Chưa nộp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scroreFrame"
+                android:layout_below="@+id/stateFrame"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Điểm:"
+                    android:id="@+id/scoreLabel"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"
+                    android:layout_alignParentStart="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/score"
+                    android:layout_toRightOf="@id/scoreLabel"
+                    android:textAlignment="textEnd"
+                    android:text="Chưa chấm điểm"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/baloo_2"
+                    android:textColor="@color/black"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:layout_marginHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:textSize="20dp"
+        android:text="Nộp bài"/>
+</RelativeLayout>

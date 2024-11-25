@@ -60,8 +60,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(files("D:\\ZegoExpressVideo-android-shared-java\\release\\Library\\ZegoExpressEngine-sources.jar"))
-    implementation(files("D:\\ZegoExpressVideo-android-shared-java\\release\\Library\\ZegoExpressEngine.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -112,4 +110,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
 
     // Anychart
+
+    // Zegocloud
+    implementation("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")
 }

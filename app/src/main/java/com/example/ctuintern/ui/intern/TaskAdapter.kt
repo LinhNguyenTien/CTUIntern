@@ -25,7 +25,6 @@ class TaskAdapter(val showDetail:(Task)->Unit): RecyclerView.Adapter<TaskAdapter
                 taskTitle.text = task.title
                 taskContent.text = task.content
                 taskExpiredDay.text = task.expiredDay
-                taskState.text = if(task.detail != null) "Đã nộp" else "Chưa nộp"
                 taskState.visibility = if(muteTaskState) VISIBLE else GONE
                 root.setOnClickListener {
                     showDetail(task)

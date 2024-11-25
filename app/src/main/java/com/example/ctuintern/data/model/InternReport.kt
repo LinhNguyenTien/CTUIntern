@@ -1,5 +1,7 @@
 package com.example.ctuintern.data.model
 
+import java.io.Serializable
+
 data class InternReport(
     val reportID: String,
     var taskListReportPath: String? = null,
@@ -11,4 +13,4 @@ data class InternReport(
     val companyScore: Double? = 0.0,
     val teacherReviewPath: String? = null,
     val teacherReviewScore: Double? = 0.0
-)
+): Serializable

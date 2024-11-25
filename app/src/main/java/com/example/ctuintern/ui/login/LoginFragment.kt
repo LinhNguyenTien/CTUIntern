@@ -82,9 +82,15 @@ class LoginFragment : MainFragment() {
                     Log.i("authen", "user: ${it.toString()}")
                     setCurrentUser(it)
                     when(it.role) {
-                        ROLE_STUDENT -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_STUDENT)
-                        ROLE_TEACHER -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_TEACHER)
-                        else -> checkVerifiedEmail(emailTXT, passwordTXT, ROLE_EMPLOYER)
+                        ROLE_STUDENT -> navigateToFragment(
+                            binding.root,
+                            R.id.action_loginFragment_to_newsFragment
+                        )
+                        ROLE_TEACHER -> navigateToFragment(
+                            binding.root,
+                            R.id.action_loginFragment_to_classManagementFragment
+                        )
+                        else -> checkVerifiedEmail(emailTXT, passwordTXT)
                     }
                 },
                 failBehavior = {
@@ -94,7 +100,7 @@ class LoginFragment : MainFragment() {
         }
     }
 
-    private fun checkVerifiedEmail(email: String, password: String, role: String) {
+    private fun checkVerifiedEmail(email: String, password: String) {
         val auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -102,17 +108,7 @@ class LoginFragment : MainFragment() {
                     val firebaseUser = auth.currentUser
                     firebaseUser?.let {
                         if (firebaseUser.isEmailVerified) {
-                            when(role) {
-                                ROLE_STUDENT -> navigateToFragment(
-                                    binding.root,
-                                    R.id.action_loginFragment_to_newsFragment
-                                )
-                                ROLE_TEACHER -> navigateToFragment(
-                                    binding.root,
-                                    R.id.action_loginFragment_to_classManagementFragment
-                                )
-                                // ROLE_EMPLOYER
-                            }
+                            // handle for role employer
                         } else {
                             // Show a message asking the user to verify their email
                             showLoginFailDialog("Email chưa được xác thực\nVui lòng kiểm tra email của bạn")

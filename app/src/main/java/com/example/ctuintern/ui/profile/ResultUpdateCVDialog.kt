@@ -3,6 +3,8 @@ package com.example.ctuintern.ui.profile
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import com.example.ctuintern.R
 import com.example.ctuintern.databinding.EmptyCvDialogBinding
 import com.example.ctuintern.databinding.ResultUploadCvDialogBinding
@@ -25,5 +27,9 @@ class ResultUpdateCVDialog(context: Context, val isSuccess: Boolean): Dialog(con
                 icon.setBackgroundResource(R.drawable.fail)
             }
         }
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            dismiss()
+        }, 500)
     }
 }

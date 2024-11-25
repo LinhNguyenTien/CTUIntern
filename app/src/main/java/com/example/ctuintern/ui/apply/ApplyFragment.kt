@@ -64,7 +64,7 @@ class ApplyFragment : MainFragment() {
     }
 
     override fun showNewsDetail(news: News) {
-
+        navigateToFragment(binding.root, ApplyFragmentDirections.actionApplyFragmentToNewsDetailFragment(news))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

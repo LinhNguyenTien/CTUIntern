@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.classManagement.CheckListReportFragment">
 
     <RelativeLayout
@@ -46,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/studentName"
-                android:text="Họ và tên:"
+                android:text="Họ và tên: Nguyễn Tiến Lĩnh"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"/>
@@ -54,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/studentCode"
-                android:text="MSSV:"
+                android:text="MSSV: B2012108"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"/>
@@ -72,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/companyName"
-                android:text="Đơn vị:"
+                android:text="Đơn vị: TMA Solutions"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"/>
@@ -80,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/companyTutorial"
-                android:text="Cán bộ hướng dẫn:"
+                android:text="Cán bộ hướng dẫn: Tô Minh Phương"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"/>
@@ -95,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/fromDay"
-                android:text="Từ ngày:"
+                android:text="Từ ngày: 13/05/2024"
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/baloo_2"
@@ -104,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/toDay"
-                android:text="Đến ngày:"
+                android:text="Đến ngày: 16/08/2024"
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/baloo_2"
@@ -125,6 +127,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/taskReview"
                 tools:itemCount="2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/review_task_item"/>
             <!--            Approve section-->
             <TextView
@@ -139,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mentorName"
-                android:text="Cán bộ hướng dẫn:"
+                android:text="Cán bộ hướng dẫn: Tô Minh Phương"
                 android:textSize="16sp"
                 android:fontFamily="@font/baloo_2"
                 android:textColor="@color/black"
@@ -158,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mentorEmail"
-                android:text="Email:"
+                android:text="Email: phuong123@tma.com.vn"
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/baloo_2"
@@ -167,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/mentorPhone"
-                android:text="Điện thoại:"
+                android:text="Điện thoại: 0123456789"
                 android:textSize="16sp"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/baloo_2"

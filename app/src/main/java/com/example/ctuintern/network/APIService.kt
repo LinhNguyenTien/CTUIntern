@@ -12,6 +12,8 @@ import com.example.ctuintern.data.model.ReportRequest
 import com.example.ctuintern.data.model.Review
 import com.example.ctuintern.data.model.Student
 import com.example.ctuintern.data.model.Task
+import com.example.ctuintern.data.model.TaskDetail
+import com.example.ctuintern.data.model.Teacher
 import com.example.ctuintern.data.model.User
 import com.google.gson.JsonObject
 import retrofit2.Response
@@ -36,14 +38,17 @@ interface APIService {
     @POST("/createUser")
     suspend fun createUser(@Body employer: Employer): Response<EmployerResponse>
 
-    @POST("/addNewsToFavorite/{userID}")
-    suspend fun addNewsToFavorite(@Body news: News, @Path("userID") userID: String)
+    @POST("/addNewsToFavorite/{userID}/{newsID}")
+    suspend fun addNewsToFavorite(@Path("userID") userID: String, @Path("newsID") newsID: String)
 
-    @POST("/removeNewsFromFavorites/{userID}")
-    suspend fun removeNewsFromFavorites(@Body news: News, @Path("userID") userID: String)
+    @POST("/removeNewsFromFavorites/{userID}/{newsID}")
+    suspend fun removeNewsFromFavorites(@Path("userID") userID: String, @Path("newsID") newsID: String);
 
-    @POST("/applyNews/{userID}")
-    suspend fun applyNews(@Body news: News, @Path("userID") userID: String)
+    @POST("/applyNews/{userID}/{newsID}")
+    suspend fun applyNews(@Path("userID") userID: String, @Path("newsID") newsID: String)
+
+    @POST("/isFavoriteNews/{userID}/{newsID}")
+    suspend fun checkFavorite(@Path("userID") userID: String, @Path("newsID") newsID: String): Response<Unit>
 
     @PATCH("/update/CV/{userID}")
     suspend fun updateCV(@Body profile: Profile, @Path("userID") userID: String)
@@ -69,8 +74,8 @@ interface APIService {
     @PATCH("/updateProfile")
     suspend fun updateProfile(@Body user: User)
 
-    @GET("/studentInternList/{classID}")
-    suspend fun getStudentList(@Path("classID") classID: String): List<InternProfile>
+    @GET("/studentList/{classID}")
+    suspend fun getStudentList(@Path("classID") classID: String): List<Student>
 
     @GET("/taskList/{classID}")
     suspend fun getTaskList(@Path("classID") classID: String): List<Task>
@@ -80,4 +85,23 @@ interface APIService {
 
     @GET("/reviews")
     suspend fun getReviewList(@Query("teacherID") teacherID: String, @Query("classID") classID: String? = ""): List<Review>
+
+    @GET("/profile/{userID}")
+    suspend fun getProfile(@Path("userID") userID: String): Profile
+
+    @GET("/getClass/{userID}")
+    suspend fun getClass(@Path("userID") userID: String): Class
+
+    @GET("/getTeacher/{userID}")
+    suspend fun getTeacher(@Path("userID") userID: String): Teacher
+    //use userID of student
+
+    @POST("/submitTask/{userID}/{taskID}")
+    suspend fun submitTask(@Path("userID") userID: String, @Path("taskID") taskID: String, @Body path: ReportRequest)
+
+    @GET("/getTaskDetail/{userID}/{taskID}")
+    suspend fun getTaskDetail(@Path("userID") userID: String, @Path("taskID") taskID: String): TaskDetail
+
+    @POST("/isAppliedNew/{userID}/{newsID}")
+    suspend fun checkAppliedNews(@Path("userID") userID: String, @Path("newsID") newsID: String): Response<Unit>
 }
